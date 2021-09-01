@@ -204,3 +204,10 @@ footer a:active {
     }
 
 }
+
+#mySidebar img {
+    display: block;
+    margin: 0 auto;
+    padding-left: 20px;
+    width: 25px;
+}
