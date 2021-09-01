@@ -201,4 +201,8 @@ footer a:active {
     .sidebar a {
         font-size: 18px;
     }
+
+    .openbtn {
+        font-size: 40px;
+    }
 }
