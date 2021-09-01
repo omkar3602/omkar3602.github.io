@@ -9,169 +9,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=yes">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="utils/jquery.doubleScroll.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-           $('.responsive').doubleScroll({resetOnWindowResize: true});
-        });
-    </script>
-    <style>
-        html {
-            height: 100%;
-        }
-        * {
-            padding: 0;
-            margin: 0;
-        }
-
-        body {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            /*overflow-x: hidden;*/
-            display: flex;
-            flex-direction: column;
-            min-height: 100%;
-        }
-
-        #heading {
-            color: #fff;
-            text-align: center;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            margin: 40px auto 60px auto;
-        }
-
-        table {
-            margin: 0 auto;
-            border-collapse: collapse;
-            background: rgb(89, 112, 85);
-        }
-
-        @media screen and (min-width: 800px) {
-            table {
-                width: 70%;
-            }
-        }
-
-        .right {
-            position: relative;
-            left: 40%;
-        }
-
-        .left {
-            position: relative;
-            right: 40%;
-        }
-
-        td {
-            min-width: 90px;
-            border: 2px solid #fff;
-            padding: 20px;
-        }
-
-        tr {
-            font-size: 20px;
-        }
-
-        main a {
-            width: fit-content;
-            padding: 5px 10px;
-            text-decoration: none;
-            color: #fff;
-            display: block;
-            margin: 10px auto 0 auto;
-            background: rgb(10, 9, 9);
-            border-radius: 10%;
-            font-size: 17px;
-        }
-
-        main a:hover {
-            background: rgb(63, 48, 58);
-            /* border: solid 1px black;  */
-        }
-
-        .space {
-            margin-bottom: 300px;
-        }
-
-        footer {
-            background: #2e2e33;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            padding-bottom: 10px;
-            margin-top: auto;
-            /* width: 100%; */
-        }
-
-        footer p {
-            padding-bottom: 10px;
-        }
-
-        .gitimg {
-            float: left;
-            width: fit-content;
-        }
-
-        footer img {
-            display: block;
-            margin: 0 auto;
-            width: 25px;
-        }
-
-        footer a {
-            margin-left: 10px;
-            vertical-align: middle;
-            color: #fff;
-        }
-
-        footer a:hover {
-            color: cornflowerblue;
-        }
-
-        footer a:active {
-            color: rgb(159, 100, 237);
-        }
-
-        .git {
-            vertical-align: middle;
-            float: left;
-            box-sizing: border-box;
-        }
-
-        .center {
-            display: inline-block;
-            margin: auto;
-        }
-
-        .line {
-            /* width: 163px;
-            height: 46px;
-            border-bottom: 1px solid #fff;
-            transform:
-                translateY(-20px) translateX(-20px) rotate(32deg);
-            position: absolute; */
-            /* top: -20px; */
-            width: 163px;
-            height: 46px;
-            border-bottom: 1px solid #fff;
-            transform:
-                translateY(-20px) translateX(-20px) rotate(32deg);
-            position: absolute;
-        }
-        .responsive {
-            overflow-x: auto;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style/main.css">
 </head>
 
 <body>
     <main>
         <h1 id="heading">C2 TIMETABLE</h1>
+        <button class="openbtn" onclick="openNav()">☰</button>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="index.html">C1 TIMETABLE</a>
+            <a href="C2.html">C2 TIMETABLE</a>
+            <a href="C3.html">C3 TIMETABLE</a>
+
+        </div>
         <div class="responsive">
             <table id="myTable">
                 <tr>
                     <td style="min-width:100px">
-                        <!-- <div class="line"></div> -->  
+                        <!-- <div class="line"></div> -->
                         <div class="right">Time</div>
                         <div class="left">Day</div>
                     </td>
@@ -352,6 +208,20 @@
             </div>
         </div>
     </footer>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.responsive').doubleScroll({ resetOnWindowResize: true });
+        });
+    </script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
 </body>
 
 </html>
