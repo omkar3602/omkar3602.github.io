@@ -186,6 +186,7 @@ footer a:active {
     position: absolute;
     top: 2%;
     left: 5%;
+    background-color: rgb(47, 47, 47);
 }
 
 .openbtn:hover {
@@ -202,7 +203,4 @@ footer a:active {
         font-size: 18px;
     }
 
-    .openbtn {
-        font-size: 40px;
-    }
 }
