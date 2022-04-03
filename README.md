@@ -1,2 +1,2 @@
 # omkar3602.github.io
-Timetable for SY-CS-C 2021-22
+Timetable for VIT-CS-C 2024
