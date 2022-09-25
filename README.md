@@ -1,2 +1,2 @@
 # omkar3602.github.io
-Timetable for VIT-CS-C 2024
+Timetable for VIT TY-CS-B 2024 batch

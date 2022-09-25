@@ -3,12 +3,17 @@ html {
 }
 
 * {
+    font-family: 'Poppins';
     padding: 0;
     margin: 0;
 }
 
 body {
-    background: #333;
+    /* background: #333; */
+    background-image: url("../images/bg.jpg");
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed;
+
     color: #fff;
     text-align: center;
     /*overflow-x: hidden;*/
@@ -27,7 +32,8 @@ body {
 table {
     margin: 0 auto;
     border-collapse: collapse;
-    background: rgb(89, 112, 85);
+    /* background: rgb(89, 112, 85); */
+    background-image: linear-gradient(to bottom right, #09203F, #537895);
 }
 
 @media screen and (min-width: 800px) {
@@ -74,7 +80,7 @@ table a:hover {
 }
 
 .space {
-    margin-bottom: 300px;
+    margin-bottom: 100px;
 }
 
 footer {
@@ -128,13 +134,12 @@ footer a:active {
 }
 
 .line {
-    width: 163px;
-    height: 46px;
-    border-bottom: 1px solid #fff;
+    width: 190px;
+    height: 60px;
+    border-bottom: 2px solid #fff;
     transform:
-        translateY(-20px) translateX(-20px) rotate(32deg);
+        translateY(-25px) translateX(-20px) rotate(32deg);
     position: absolute;
-    /* top: -20px; */
 }
 
 .responsive {
@@ -178,7 +183,7 @@ footer a:active {
 .openbtn {
     font-size: 30px;
     cursor: pointer;
-    background-color: #333;
+    /* background-color: #333; */
     color: white;
     padding: 10px 15px;
     border: none;
@@ -186,11 +191,12 @@ footer a:active {
     position: absolute;
     top: 3%;
     left: 3%;
-    background-color: rgb(47, 47, 47);
+    /* background-color: rgb(47, 47, 47); */
+    background: transparent;
 }
 
 .openbtn:hover {
-    background-color: rgb(39, 39, 39);
+    background-color: rgba(255, 255, 255, 0.569);
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
