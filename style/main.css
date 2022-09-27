@@ -213,3 +213,15 @@ footer a:active {
     padding-left: 20px;
     width: 25px;
 }
+
+.room_no {
+    width: fit-content;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    margin: 10px auto 0 auto;
+    background: rgb(10, 9, 9);
+    border-radius: 10%;
+    font-size: 17px;
+}
