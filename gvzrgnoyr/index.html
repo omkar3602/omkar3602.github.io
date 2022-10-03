@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        TY-CS-B2 TIMETABLE
+    </title>
+    <link rel="icon" href="images/calendar-event.svg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=yes">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="utils/jquery.doubleScroll.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+</head>
+
+<!-- 
+Sample <td> Cell
+<td>
+    COAA NHK THEORY
+    <a href="https://meet.google.com/fui-mzqu-ojn" target="_blank">Join</a>
+</td>
+ -->
+
+<body>
+    <main>
+        <h1 id="heading">TY-CS-B2 TIMETABLE</h1>
+        <button class="openbtn" onclick="openNav()">☰</button>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="index.html">Home</a>
+            <a href="https://github.com/omkar3602/omkar3602.github.io" target="_blank">
+                <!-- <div class="gitimg">
+                    <img src="images/github.png" alt="github">
+                </div> -->
+                Github link
+            </a>
+        </div>
+        <div class="responsive">
+            <table id="myTable">
+                <tr>
+                    <td class="line">
+                        <div class="right">Time</div>
+                        <div class="left">Day</div>
+                    </td>
+                    <!-- <td style="min-width:100px">8 to 9</td>
+                    <td style="min-width:100px">9 to 10</td> -->
+                    <td style="min-width:100px">10 to 11</td>
+                    <td style="min-width:100px">11 to 12</td>
+                    <td style="min-width:100px">12 to 1</td>
+                    <td style="min-width:100px">1 to 2</td>
+                    <td style="min-width:100px">2 to 3</td>
+                    <td style="min-width:100px">3 to 4</td>
+                    <td style="min-width:100px">4 to 5</td>
+                    <td style="min-width:100px">5 to 6</td>
+                </tr>
+                <tr height="151">
+                    <td>Monday</td>
+                    <!-- <td></td>
+                    <td></td> -->
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">
+                        OS SGL LAB
+                        <div class="room_no">1323A</div>
+                    </td>
+                    <td colspan="2">
+                        CN SAP LAB
+                        <div class="room_no">1321D</div>
+                    </td>
+                    <td colspan="2">
+                        DAAOA PSJ LAB
+                        <div class="room_no">1327</div>
+                    </td>
+                </tr>
+                <tr height="151">
+                    <td>Tuesday</td>
+                    <!-- <td></td>
+                    <td></td> -->
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        WT SMJ THEORY
+                        <div class="room_no">1413</div>
+                    </td>
+                    <td colspan="2">
+                        WT SMJ LAB
+                        <div class="room_no">1316D</div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr height="151">
+                    <td>Wednesday</td>
+                    <!-- <td></td>
+                    <td></td> -->
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        CN SRS TUTORIAL
+                        <div class="room_no">1321D</div>
+                    </td>
+                    <td>
+                        DAAOA PSJ TUTORIAL
+                        <div class="room_no">1327</div>
+                    </td>
+                    <td>
+                        WT SMJ TUTORIAL
+                        <div class="room_no">1316D</div>
+                    </td>
+                    <td>
+                        OS SGL TUTORIAL
+                        <div class="room_no">1323A</div>
+                    </td>
+                </tr>
+                <tr height="151">
+                    <td>Thursday</td>
+                    <!-- <td></td>
+                    <td></td> -->
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        CN SRS THEORY
+                        <div class="room_no">1325</div>
+                    </td>
+                    <td>
+                        OS SGL THEORY
+                        <div class="room_no">1325</div>
+                    </td>
+                    <td>
+                        DAAOA PSJ THEORY
+                        <div class="room_no">1325</div>
+                    </td>
+                    <td>
+                        DT-I SMJ TUTORIAL
+                        <div class="room_no">-</div>
+                    </td>
+                </tr>
+                <tr height="151">
+                    <td>Friday</td>
+                    <!-- <td></td>
+                    <td></td> -->
+                    <td></td>
+                    <td></td>
+                    <td>
+                        OS SGL THEORY
+                        <div class="room_no">1324</div>
+                    </td>
+                    <td>
+                        DAAOA PSJ THEORY
+                        <div class="room_no">1324</div>
+                    </td>
+                    <td>
+                        CN SRS THEORY
+                        <div class="room_no">1325</div>
+                    </td>
+                    <td>
+                        WT SMJ THEORY
+                        <div class="room_no">1325</div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr height="151">
+                    <td>Saturday</td>
+                    <!-- <td></td>
+                    <td></td> -->
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">
+                        EDI-V SMJ LAB
+                        <div class="room_no">-</div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr height="151">
+                    <td>Sunday</td>
+                    <!-- <td></td>
+                    <td></td> -->
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="space"></div>
+    </main>
+    <footer>
+        <p>This website is made by</p>
+        <div class="center">
+            <div class="gitimg">
+                <img src="images/github.png" alt="github">
+            </div>
+            <div class="git">
+                <a href="https://github.com/omkar3602" target="_blank">
+                    omkar3602
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.responsive').doubleScroll({ resetOnWindowResize: true });
+        });
+    </script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
+</body>
+
+</html>
