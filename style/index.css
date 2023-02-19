@@ -711,3 +711,12 @@ p {
     }
 
 }
+
+.mail-link {
+    text-decoration: none;
+}
+
+.mail-link:hover {
+    text-decoration: none;
+    color: #fff;
+}
