@@ -632,7 +632,7 @@ p {
     font-size: 23px;
 }
 
-.footer-area p {
+.footer-area p, span{
     margin-top: 13px;
     color: var(--secondary-color);
     font-size: 12px;
