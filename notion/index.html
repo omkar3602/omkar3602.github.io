@@ -1,28 +1,27 @@
-<head>
-    <style>
-        /* style the widget to match the style of a notion page h2 */
-        #widget {
-            font-size: 1.5rem;
-            font-weight: 500;
-            line-height: 2rem;
-            color: rgb(55, 53, 47);
-            margin: 0px;
-            padding: 0px;
-            display: inline;
-            /* set font family to match notion page */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-                "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        }
-    </style>
-</head>
+<html>
+    <head>
+        <style>
+            #widget {
+                font-size: 1.5rem;
+                font-weight: 500;
+                line-height: 2.5rem;
+                color: #ffffff;
+                background-color: #1f1f1f;
 
-<div id="widget"></div>
+                display: inline;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+                    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            }
+        </style>
+    </head>
 
-<script>
-    // set current day in Month DD, YYYY format
-    document.getElementById('widget').innerHTML = new Date().toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric'
-    });
-</script>
+    <div id="widget"></div>
+
+    <script>
+        document.getElementById('widget').innerHTML = new Date().toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+        });
+    </script>
+</html>
