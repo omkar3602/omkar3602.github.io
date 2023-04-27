@@ -1,0 +1,10 @@
+<div id="widget"></div>
+
+<script>
+    // set current day in Month DD, YYYY format
+    document.getElementById('widget').innerHTML = new Date().toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    });
+</script>
