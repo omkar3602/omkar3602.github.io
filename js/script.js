@@ -27,6 +27,11 @@ tabs.forEach(tab => {
     })
 });
 
+window.onload = function() {
+    var button = document.getElementById('back-to-top');
+    button.style.display = 'none';
+}
+
 // Show or hide the button based on scroll position
 window.onscroll = function() {
     var button = document.getElementById('back-to-top');
