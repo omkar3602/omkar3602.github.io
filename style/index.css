@@ -698,6 +698,9 @@ p {
 
 
 @media (max-width: 767px) and (min-width: 500px) {
+    .footer-area {
+        text-align: center;
+    }
     .footer-area .links {
         margin-bottom: 30px;
     }
@@ -712,11 +715,35 @@ p {
 
 }
 
-.mail-link {
+.link {
     text-decoration: none;
 }
 
-.mail-link:hover {
+.link:hover {
     text-decoration: none;
     color: #fff;
+}
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* Initially hidden */
+    background-color: transparent;
+    color: var(--orange-color);
+    border: 2px solid var(--orange-color);
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#back-to-top:hover {
+    background-color: #555;
+}
+
+#back-to-top i {
+    font-size: 16px;
 }
