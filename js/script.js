@@ -1,6 +1,6 @@
 // Typing Animation
 var typed = new Typed(".typing", {
-    strings: ["Machine Learning", "Deep Learning", "Web Development", "Competitive Coding"],
+    strings: ["Artificial Intelligence", "Full Stack Development", "AWS", "Deep Learning"],
     typeSpeed: 100,
     backSpeed: 60,
     loop: true,
