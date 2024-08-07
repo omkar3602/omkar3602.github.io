@@ -452,7 +452,7 @@ p {
     background: rgba(0, 0, 0, 0.7);
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: 15rem;
     left: 0;
     top: 0;
     bottom: 0;
@@ -467,14 +467,34 @@ p {
     opacity: 1
 }
 
+.card-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
 .card {
-    min-height: 340px;
+    width: 15rem;
+    height: 340px;
+    overflow: hidden;
+    flex: 0 0 15rem;
 }
 
 .content-image {
     width: 100%;
-    min-height: 250px;
-    max-height: 250px;
+    height: 15rem;
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    .content .content-overlay, .card, .content-image {
+        width: 20rem;
+    }
+    .card {
+        flex: 0 0 20rem;
+    }
 }
 
 .content-details {
