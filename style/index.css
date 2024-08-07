@@ -363,7 +363,6 @@ p {
     display: flex;
     align-items: center;
     margin-bottom: 2.5rem;
-    cursor: pointer;
 }
 
 .skills-icon {
