@@ -558,6 +558,9 @@ p {
     .content p {
         font-size: 15px;
     }
+    .hero-section .btn-container .button {
+        height: 60px;
+    }
 }
 
 /* Contact Section */
