@@ -1,0 +1,771 @@
+openapi: 3.0.0
+info:
+  title: Innovator Connect API
+  description: API for managing projects, events, and user interactions in the Innovator Connect platform.
+  version: 1.0.0
+servers:
+  - url: https://api.innovatorconnect.tech/v1
+    description: Production server
+  - url: http://localhost:8000/api
+    description: Local development server
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Authentication
+    description: User authentication and registration
+  - name: Events
+    description: Operations related to events
+  - name: Projects
+    description: Operations related to projects
+
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistrationRequest'
+      responses:
+        '201':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '400':
+          description: Invalid input
+        '409':
+          description: User with email or username already exists
+      security: [] # No authentication needed for registration
+
+  /auth/login:
+    post:
+      summary: Login a user
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLoginRequest'
+      responses:
+        '200':
+          description: User logged in successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: JWT authentication token
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          description: Invalid credentials
+      security: [] # No authentication needed for login
+
+  /events:
+    get:
+      summary: Get all events
+      description: Get a list of events. The admin_comment field is only included in responses for admins and the respective event hosts.
+      tags:
+        - Events
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [pending, approved, rejected]
+          description: Filter events by status (e.g., for admin approval)
+        - in: query
+          name: hostId
+          schema:
+            type: string
+          description: Filter events by host ID
+      responses:
+        '200':
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden (if user doesn't have access to specific statuses)
+    post:
+      summary: Create a new event
+      description: Allows Project/Event Hosts to submit new events for approval.
+      tags:
+        - Events
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventCreationRequest'
+      responses:
+        '201':
+          description: Event created successfully and pending approval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '400':
+          description: Invalid input
+        '401':
+          description: Unauthorized (only authenticated hosts can create events)
+        '403':
+          description: Forbidden (user is not a host)
+
+  /events/{eventId}:
+    get:
+      summary: Get event by ID
+      description: Get detailed information about a specific event. The admin_comment field is only included in responses for admins and the event host.
+      tags:
+        - Events
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+          description: The ID of the event to retrieve
+      responses:
+        '200':
+          description: Event details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '404':
+          description: Event not found
+    put:
+      summary: Update an event
+      description: Allows Project/Event Hosts to update their own events.
+      tags:
+        - Events
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+          description: The ID of the event to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventUpdateRequest'
+      responses:
+        '200':
+          description: Event updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '400':
+          description: Invalid input
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden (user is not the host of this event or not an admin)
+        '404':
+          description: Event not found
+
+  /events/{eventId}/approve:
+    put:
+      summary: Approve an event
+      description: Allows Admin to approve a pending event.
+      tags:
+        - Events
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+          description: The ID of the event to approve
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminActionRequest'
+      responses:
+        '200':
+          description: Event approved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden (only admins can approve events)
+        '404':
+          description: Event not found
+        '409':
+          description: Event is not in a pending state
+
+  /events/{eventId}/reject:
+    put:
+      summary: Reject an event
+      description: Allows Admin to reject a pending event with an optional comment explaining the reason.
+      tags:
+        - Events
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+          description: The ID of the event to reject
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminActionRequest'
+      responses:
+        '200':
+          description: Event rejected successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden (only admins can reject events)
+        '404':
+          description: Event not found
+        '409':
+          description: Event is not in a pending state
+
+  /events/{eventId}/register:
+    post:
+      summary: Register for an event
+      description: Allows Innovators to register for an approved event.
+      tags:
+        - Events
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+          description: The ID of the event to register for
+      responses:
+        '200':
+          description: Successfully registered for the event
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden (only innovators can register, or event is not approved)
+        '404':
+          description: Event not found
+        '409':
+          description: Already registered for this event or event is full
+
+  /projects:
+    get:
+      summary: Get all projects
+      description: Get a list of projects. The admin_comment field is only included in responses for admins and the respective project hosts.
+      tags:
+        - Projects
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [pending, approved, rejected]
+          description: Filter projects by status (e.g., for admin approval)
+        - in: query
+          name: hostId
+          schema:
+            type: string
+          description: Filter projects by host ID
+      responses:
+        '200':
+          description: A list of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden (if user doesn't have access to specific statuses)
+    post:
+      summary: Create a new project
+      description: Allows Project/Event Hosts to submit new projects for approval.
+      tags:
+        - Projects
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreationRequest'
+      responses:
+        '201':
+          description: Project created successfully and pending approval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '400':
+          description: Invalid input
+        '401':
+          description: Unauthorized (only authenticated hosts can create projects)
+        '403':
+          description: Forbidden (user is not a host)
+
+  /projects/{projectId}:
+    get:
+      summary: Get project by ID
+      description: Get detailed information about a specific project. The admin_comment field is only included in responses for admins and the project host.
+      tags:
+        - Projects
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+          description: The ID of the project to retrieve
+      responses:
+        '200':
+          description: Project details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          description: Project not found
+    put:
+      summary: Update a project
+      description: Allows Project/Event Hosts to update their own projects.
+      tags:
+        - Projects
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+          description: The ID of the project to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectUpdateRequest'
+      responses:
+        '200':
+          description: Project updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '400':
+          description: Invalid input
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden (user is not the host of this project or not an admin)
+        '404':
+          description: Project not found
+
+  /projects/{projectId}/approve:
+    put:
+      summary: Approve a project
+      description: Allows Admin to approve a pending project.
+      tags:
+        - Projects
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+          description: The ID of the project to approve
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminActionRequest'
+      responses:
+        '200':
+          description: Project approved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden (only admins can approve projects)
+        '404':
+          description: Project not found
+        '409':
+          description: Project is not in a pending state
+
+  /projects/{projectId}/reject:
+    put:
+      summary: Reject a project
+      description: Allows Admin to reject a pending project with an optional comment explaining the reason.
+      tags:
+        - Projects
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+          description: The ID of the project to reject
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminActionRequest'
+      responses:
+        '200':
+          description: Project rejected successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden (only admins can reject projects)
+        '404':
+          description: Project not found
+        '409':
+          description: Project is not in a pending state
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the user
+          readOnly: true
+        username:
+          type: string
+          description: User's chosen username
+          example: innovator_user
+        email:
+          type: string
+          format: email
+          description: User's email address
+          example: user@example.com
+        role:
+          type: string
+          enum: [innovator, host, admin]
+          description: Role of the user in the system
+          example: innovator
+      required:
+        - id
+        - username
+        - email
+        - role
+
+    UserRegistrationRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Desired username
+          example: new_innovator
+        email:
+          type: string
+          format: email
+          description: User's email address
+          example: newuser@example.com
+        password:
+          type: string
+          format: password
+          description: Desired password
+          example: MyStrongPassword123!
+        role:
+          type: string
+          enum: [innovator, host]
+          description: Role of the user (admin role is not self-registrable)
+          example: innovator
+      required:
+        - username
+        - email
+        - password
+        - role
+
+    UserLoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          description: User's username
+          example: innovator_user
+        password:
+          type: string
+          format: password
+          description: User's password
+          example: MyStrongPassword123!
+      required:
+        - username
+        - password
+
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the event
+          readOnly: true
+        title:
+          type: string
+          description: Title of the event
+          example: Innovator Pitch Day
+        description:
+          type: string
+          description: Detailed description of the event
+          example: An event for innovators to pitch their ideas to potential investors.
+        date:
+          type: string
+          format: date-time
+          description: Date and time of the event
+          example: '2025-08-15T10:00:00Z'
+        location:
+          type: string
+          description: Location of the event
+          example: Online (Zoom)
+        hostId:
+          type: string
+          format: uuid
+          description: ID of the user who created the event
+          readOnly: true
+        status:
+          type: string
+          enum: [pending, approved, rejected]
+          description: Current approval status of the event
+          example: pending
+          readOnly: true
+        registeredUsers:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: List of user IDs registered for the event
+          readOnly: true
+          example: ["user-uuid-1", "user-uuid-2"]
+        admin_comment:
+          type: string
+          description: Admin comment explaining approval or rejection reason. Only visible to admins and the event host.
+          readOnly: true
+          example: "Event approved - meets all community guidelines"
+      required:
+        - id
+        - title
+        - description
+        - date
+        - location
+        - hostId
+        - status
+
+    EventCreationRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the event
+          example: Future Tech Summit
+        description:
+          type: string
+          description: Detailed description of the event
+          example: A summit showcasing cutting-edge technologies and innovations.
+        date:
+          type: string
+          format: date-time
+          description: Date and time of the event
+          example: '2025-09-01T09:00:00Z'
+        location:
+          type: string
+          description: Location of the event
+          example: Convention Center Hall A
+      required:
+        - title
+        - description
+        - date
+        - location
+
+    EventUpdateRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the event
+          example: Future Tech Summit (Updated)
+        description:
+          type: string
+          description: Detailed description of the event
+          example: A summit showcasing cutting-edge technologies and innovations, now with more workshops.
+        date:
+          type: string
+          format: date-time
+          description: Date and time of the event
+          example: '2025-09-01T09:00:00Z'
+        location:
+          type: string
+          description: Location of the event
+          example: Convention Center Hall B
+      # All properties are optional for update, as only specific fields might be changed
+
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the project
+          readOnly: true
+        title:
+          type: string
+          description: Title of the project
+          example: AI-Powered Smart Home System
+        description:
+          type: string
+          description: Detailed description of the project
+          example: Developing an intelligent system to automate home functions using AI.
+        hostId:
+          type: string
+          format: uuid
+          description: ID of the user who created the project
+          readOnly: true
+        status:
+          type: string
+          enum: [pending, approved, rejected]
+          description: Current approval status of the project
+          example: pending
+          readOnly: true
+        contactEmail:
+          type: string
+          format: email
+          description: Email for innovators to contact the project host
+          example: project.host@example.com
+        admin_comment:
+          type: string
+          description: Admin comment explaining approval or rejection reason. Only visible to admins and the project host.
+          readOnly: true
+          example: "Project approved - innovative concept with clear implementation plan"
+      required:
+        - id
+        - title
+        - description
+        - hostId
+        - status
+        - contactEmail
+
+    ProjectCreationRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the project
+          example: Decentralized Identity Platform
+        description:
+          type: string
+          description: A blockchain-based platform for secure and private digital identities.
+          example: A blockchain-based platform for secure and private digital identities.
+        contactEmail:
+          type: string
+          format: email
+          description: Email for innovators to contact the project host
+          example: host.contact@example.com
+      required:
+        - title
+        - description
+        - contactEmail
+
+    ProjectUpdateRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the project
+          example: Decentralized Identity Platform (V2)
+        description:
+          type: string
+          description: A blockchain-based platform for secure and private digital identities, now with enhanced privacy features.
+          example: A blockchain-based platform for secure and private digital identities, now with enhanced privacy features.
+        contactEmail:
+          type: string
+          format: email
+          description: Email for innovators to contact the project host
+          example: updated.host.contact@example.com
+      # All properties are optional for update
+
+    AdminActionRequest:
+      type: object
+      properties:
+        comment:
+          type: string
+          description: Optional comment explaining the approval or rejection decision
+          example: "Project meets all technical requirements and community guidelines"
+      # No required fields - comment is optional
+
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A descriptive message about the operation's result
+          example: Operation successful
