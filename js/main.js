@@ -26,7 +26,6 @@ const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
         if (e.isIntersecting) {
             e.target.classList.add('in');
-            e.target.querySelectorAll('.skill-fill').forEach(f => f.style.width = f.dataset.w + '%');
             io.unobserve(e.target);
         }
     });

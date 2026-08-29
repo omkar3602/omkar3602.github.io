@@ -152,16 +152,17 @@ h2.big { font-size: clamp(30px, 4vw, 44px); font-weight: 800; letter-spacing: -0
 .timeline-item .where { color: var(--ink-soft); font-size: 14.5px; margin-top: 7px; }
 .timeline-item .meta { color: var(--ink-soft); font-size: 13px; margin-top: 8px; font-style: italic; }
 
-/* Skills bento */
-.skills-bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.skill-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-.skill-card h3 .ic { width: 34px; height: 34px; border-radius: 10px; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: 16px; }
-.skill-bar-row { margin-bottom: 16px; }
-.skill-bar-row:last-child { margin-bottom: 0; }
-.skill-bar-top { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-soft); margin-bottom: 6px; }
-.skill-bar-top span:first-child { color: var(--ink); font-weight: 500; }
-.skill-track { height: 6px; background: var(--panel); border-radius: 4px; overflow: hidden; }
-.skill-fill { height: 100%; border-radius: 4px; background: var(--grad); width: 0%; transition: width 1.2s cubic-bezier(0.16,1,0.3,1); }
+/* Skills — tech wall */
+.group-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; margin: 44px 0 16px; }
+.group-label:first-of-type { margin-top: 40px; }
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 14px; }
+.tile { background: var(--panel-2); border: 1px solid var(--line); border-radius: 16px; padding: 20px 12px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; transition: all 0.25s ease; }
+.tile:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 24px -12px rgba(248,118,82,0.4); }
+.tile .glyph { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tile .glyph img { width: 24px; height: 24px; object-fit: contain; }
+.tile .glyph.logo { background: #fff; }
+.tile .glyph.emoji-glyph { background: #fff; font-size: 22px; }
+.tile .label { font-size: 12.5px; font-weight: 600; color: var(--ink); line-height: 1.3; }
 
 /* Projects */
 .filters { display: flex; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
@@ -211,7 +212,6 @@ footer .socials svg { width: 14px; height: 14px; }
     .menu-toggle { display: flex; }
     .hero-grid { grid-template-columns: 1fr; }
     .hero-photo { order: -1; max-width: 240px; margin: 0 auto 20px; }
-    .skills-bento { grid-template-columns: 1fr; }
     .timeline-item { grid-template-columns: 1fr; row-gap: 8px; }
     .timeline-item .when, .timeline-item .entry-body { grid-column: 1; }
     .timeline-item .when { padding-top: 0; }

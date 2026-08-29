@@ -16,9 +16,9 @@
 - [x] Something is wrong with the mail icon
 - [x] Remove the 2 icons from the footer entirely
 - [x] Update the interests --list
+- [x] !IMP Update the skills (I will give new skills) Remove the % concept from the skills section and design something new. (Give me prototypes)
 
 ## Priority
-- [ ] !IMP Update the skills (I will give new skills) Remove the % concept from the skills section and design something new. (Give me prototypes)
 
 
 ## Backlog
