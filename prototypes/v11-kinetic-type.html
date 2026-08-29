@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omkar Jahagirdar — Portfolio</title>
+    <link rel="icon" href="../images/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0E0E10;
+            --panel: #17171A;
+            --line: #2A2A2E;
+            --ink: #F5F5F0;
+            --ink-soft: #8C8C90;
+            --accent: #C6FF3D;
+            --accent-2: #FF5A3C;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        .display { font-family: 'Archivo Black', sans-serif; }
+
+        .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+
+        /* Nav — corner style */
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 26px 40px; pointer-events: none; }
+        header * { pointer-events: auto; }
+        .brand { font-family: 'Archivo Black', sans-serif; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+        .brand img { width: 26px; border-radius: 6px; }
+        .nav-links { display: flex; gap: 24px; list-style: none; font-size: 12.5px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }
+        .nav-links a { color: var(--ink-soft); transition: color 0.2s ease; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta { border: 1px solid var(--ink); padding: 10px 18px; font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; border-radius: 999px; transition: all 0.2s ease; }
+        .nav-cta:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+        .menu-toggle span { width: 22px; height: 2px; background: var(--ink); }
+
+        /* Marquee */
+        .marquee-wrap { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; padding: 22px 0; }
+        .marquee-track { display: flex; gap: 60px; white-space: nowrap; width: max-content; animation: scroll-left 22s linear infinite; }
+        .marquee-track span { font-family: 'Archivo Black', sans-serif; font-size: 26px; text-transform: uppercase; color: var(--ink-soft); display: flex; align-items: center; gap: 60px; }
+        .marquee-track span.hl { color: var(--accent); }
+        @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        section { padding: 130px 0; }
+
+        .idx-mark { font-family: 'Archivo Black', sans-serif; font-size: 13px; color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 26px; }
+
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 90px; padding-bottom: 60px; }
+        .hero-inner { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: 40px; align-items: end; }
+        .hero h1 { font-family: 'Archivo Black', sans-serif; font-size: clamp(40px, 6.4vw, 92px); line-height: 0.9; letter-spacing: -0.02em; text-transform: uppercase; }
+        .hero h1 .accent { color: var(--accent); }
+        .hero .role { margin-top: 26px; font-size: clamp(15px, 1.6vw, 18px); color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; min-height: 24px; }
+        .hero .role .hl { color: var(--accent-2); }
+        .hero .role .cursor { display: inline-block; width: 2px; background: var(--accent-2); margin-left: 2px; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .hero-photo { aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; }
+        .hero-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(60%) contrast(1.05); }
+        .hero p.bio { margin-top: 30px; max-width: 640px; color: var(--ink-soft); font-size: 16px; grid-column: 1 / -1; }
+        .hero-actions { display: flex; gap: 16px; margin-top: 30px; flex-wrap: wrap; grid-column: 1 / -1; }
+        .btn-primary { background: var(--accent); color: var(--bg); padding: 16px 30px; border-radius: 999px; font-weight: 800; font-size: 13.5px; text-transform: uppercase; letter-spacing: 0.03em; transition: transform 0.2s ease; }
+        .btn-primary:hover { transform: translateY(-2px); }
+        .btn-ghost { border: 1px solid var(--line); padding: 15px 28px; border-radius: 999px; font-weight: 700; font-size: 13.5px; text-transform: uppercase; letter-spacing: 0.03em; transition: border-color 0.2s ease; }
+        .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+        .socials { display: flex; gap: 14px; margin-top: 30px; grid-column: 1 / -1; }
+        .socials a { width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
+        .socials a:hover { border-color: var(--accent); color: var(--accent); }
+        .socials svg { width: 16px; height: 16px; fill: currentColor; }
+
+        h2.big { font-family: 'Archivo Black', sans-serif; font-size: clamp(38px, 6vw, 76px); text-transform: uppercase; line-height: 0.98; letter-spacing: -0.02em; margin-bottom: 60px; }
+        h2.big .accent { color: var(--accent); }
+
+        /* About */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .col-title { font-family: 'Archivo Black', sans-serif; font-size: 14px; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 26px; letter-spacing: 0.04em; }
+        .entry { padding: 22px 0; border-top: 1px solid var(--line); }
+        .entry .when { font-size: 11.5px; color: var(--accent-2); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+        .entry .what { font-weight: 700; font-size: 19px; }
+        .entry .where { color: var(--ink-soft); font-size: 14px; margin-top: 4px; }
+        .entry .meta { color: var(--ink-soft); font-size: 12.5px; margin-top: 4px; font-style: italic; }
+
+        /* Skills — as marquee strip */
+        .skills-marquee { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 30px 0; overflow: hidden; margin-top: 20px; }
+        .skills-marquee .marquee-track { animation-duration: 30s; }
+        .skills-marquee .marquee-track span { font-size: 22px; color: var(--ink); }
+        .skills-marquee .marquee-track span .dot { color: var(--accent); }
+        .skill-groups-plain { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
+        .skill-groups-plain h3 { font-family: 'Archivo Black', sans-serif; font-size: 14px; text-transform: uppercase; margin-bottom: 16px; color: var(--ink-soft); }
+        .skill-groups-plain .items { font-size: 15px; color: var(--ink); line-height: 2; }
+
+        /* Projects — stacked full-width rows */
+        .filters { display: flex; gap: 10px; margin-bottom: 50px; flex-wrap: wrap; }
+        .filter-btn { background: transparent; border: 1px solid var(--line); color: var(--ink-soft); padding: 10px 20px; border-radius: 999px; font-size: 12.5px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; font-family: 'Inter', sans-serif; letter-spacing: 0.03em; }
+        .filter-btn.active, .filter-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+        .project-row { display: grid; grid-template-columns: 1fr auto 140px; align-items: center; gap: 24px; padding: 30px 0; border-top: 1px solid var(--line); transition: padding-left 0.3s ease; position: relative; }
+        .project-row:last-child { border-bottom: 1px solid var(--line); }
+        .project-row:hover { padding-left: 16px; }
+        .project-row .title { font-family: 'Archivo Black', sans-serif; font-size: clamp(20px, 2.8vw, 32px); text-transform: uppercase; line-height: 1.1; }
+        .project-row .cat { font-size: 11.5px; color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; margin-top: 8px; }
+        .project-row .thumb { width: 110px; height: 74px; border-radius: 6px; overflow: hidden; opacity: 0; transform: scale(0.85); transition: all 0.3s ease; }
+        .project-row:hover .thumb { opacity: 1; transform: scale(1); }
+        .project-row .thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .project-row .arrow { font-size: 26px; color: var(--ink-soft); transition: all 0.3s ease; text-align: right; }
+        .project-row:hover .arrow { color: var(--accent); transform: translateX(6px); }
+
+        /* Contact */
+        .contact-hero { text-align: left; }
+        .contact-hero h2.big { margin-bottom: 30px; }
+        .contact-hero p.lead { color: var(--ink-soft); font-size: 17px; max-width: 560px; margin-bottom: 40px; }
+        .big-email { font-family: 'Archivo Black', sans-serif; font-size: clamp(24px, 4vw, 46px); text-transform: uppercase; color: var(--accent); display: inline-block; border-bottom: 3px solid var(--accent); padding-bottom: 8px; word-break: break-all; }
+        .contact-meta { display: flex; gap: 40px; margin-top: 50px; flex-wrap: wrap; }
+        .contact-meta .item .k { font-size: 11.5px; text-transform: uppercase; color: var(--ink-soft); letter-spacing: 0.04em; margin-bottom: 8px; }
+        .contact-meta .item .v { font-size: 15px; font-weight: 600; }
+        .socials-lg { display: flex; gap: 16px; margin-top: 40px; }
+        .socials-lg a { width: 50px; height: 50px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
+        .socials-lg a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+        .socials-lg svg { width: 18px; height: 18px; fill: currentColor; }
+
+        form.contact-form-lg { margin-top: 60px; max-width: 620px; display: flex; flex-direction: column; gap: 22px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+        .contact-form-lg input, .contact-form-lg textarea { background: transparent; border: none; border-bottom: 1px solid var(--line); padding: 12px 0; font-family: 'Inter', sans-serif; font-size: 16px; color: var(--ink); }
+        .contact-form-lg textarea { resize: vertical; min-height: 90px; }
+        .contact-form-lg input::placeholder, .contact-form-lg textarea::placeholder { color: var(--ink-soft); }
+        .contact-form-lg input:focus, .contact-form-lg textarea:focus { outline: none; border-color: var(--accent); }
+        .contact-form-lg button { align-self: flex-start; background: var(--accent); color: var(--bg); border: none; padding: 16px 34px; border-radius: 999px; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 0.03em; cursor: pointer; margin-top: 10px; transition: transform 0.2s ease; }
+        .contact-form-lg button:hover { transform: translateY(-2px); }
+
+        footer { border-top: 1px solid var(--line); padding: 34px 0; }
+        footer .wrap { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--ink-soft); }
+
+        #back-to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--panel); color: var(--ink); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; pointer-events: none; transition: all 0.25s ease; z-index: 90; }
+        #back-to-top.show { opacity: 1; pointer-events: auto; }
+        #back-to-top:hover { border-color: var(--accent); color: var(--accent); }
+
+        @media (max-width: 860px) {
+            header { padding: 20px 24px; }
+            .nav-links { display: none; }
+            .menu-toggle { display: flex; }
+            .wrap { padding: 0 24px; }
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero-photo { order: -1; max-width: 260px; aspect-ratio: 1; margin-bottom: 20px; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .skill-groups-plain { grid-template-columns: 1fr; gap: 30px; }
+            .project-row { grid-template-columns: 1fr auto; }
+            .project-row .thumb { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-meta { gap: 26px; }
+        }
+        @media (max-width: 560px) {
+            section { padding: 90px 0; }
+            .marquee-track span { font-size: 18px; gap: 30px; }
+            .skills-marquee .marquee-track span { font-size: 16px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="site-header">
+        <a href="#home" class="brand"><img src="../images/icon.png" alt="">OJ.</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="https://medium.com/@omkar3602" target="_blank">Blog</a></li>
+        </ul>
+        <a href="../documents/Omkar_Jahagirdar.pdf" target="_blank" class="nav-cta">Résumé</a>
+        <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="wrap hero-inner">
+            <div>
+                <h1>Omkar<br>Jahagird<span class="accent">ar.</span></h1>
+            </div>
+            <div class="hero-photo"><img src="../images/photo.png" alt="Omkar Jahagirdar"></div>
+            <div class="role mono">I build with <span class="hl" id="typed"></span><span class="cursor">&nbsp;</span></div>
+            <p class="bio">Grad student in Computer Science at Stony Brook University, formerly a Software Engineering Intern at JPMorgan Chase &amp; Co. I turn ideas in AI and full-stack development into things people actually use.</p>
+            <div class="hero-actions">
+                <a href="../documents/Omkar_Jahagirdar.pdf" target="_blank" class="btn-primary">Download résumé</a>
+                <a href="#projects" class="btn-ghost">View projects</a>
+            </div>
+            <div class="socials">
+                <a href="https://linkedin.com/in/omkar-jahagirdar" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+                <a href="https://github.com/omkar3602" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.44-2.28 1.18-3.08-.12-.29-.51-1.45.11-3.02 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.57.23 2.73.11 3.02.74.8 1.18 1.83 1.18 3.08 0 4.4-2.7 5.38-5.27 5.66.42.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-wrap">
+        <div class="marquee-track">
+            <span>ARTIFICIAL INTELLIGENCE <span class="hl">/</span> FULL STACK DEVELOPMENT <span class="hl">/</span> AWS <span class="hl">/</span> DEEP LEARNING <span class="hl">/</span></span>
+            <span>ARTIFICIAL INTELLIGENCE <span class="hl">/</span> FULL STACK DEVELOPMENT <span class="hl">/</span> AWS <span class="hl">/</span> DEEP LEARNING <span class="hl">/</span></span>
+        </div>
+    </div>
+
+    <section id="about">
+        <div class="wrap">
+            <div class="idx-mark">01 — Background</div>
+            <h2 class="big reveal">Studied &amp; <span class="accent">worked.</span></h2>
+            <div class="about-grid">
+                <div>
+                    <div class="col-title">Education</div>
+                    <div class="entry reveal"><div class="when">Aug 2024 — Current</div><div class="what">Masters in Computer Science</div><div class="where">Stony Brook University, New York, USA</div></div>
+                    <div class="entry reveal"><div class="when">Jul 2020 — May 2024</div><div class="what">B.Tech, Computer Engineering</div><div class="where">Vishwakarma Institute of Technology, Pune</div><div class="meta">CGPA: 9.1</div></div>
+                    <div class="entry reveal"><div class="when">Jun 2018 — Mar 2020</div><div class="what">HSC</div><div class="where">D.A.V. Public School, Pune</div><div class="meta">91.2%</div></div>
+                    <div class="entry reveal"><div class="when">Jun 2012 — Mar 2018</div><div class="what">SSC</div><div class="where">D.A.V. Public School, Pune</div><div class="meta">91.8%</div></div>
+                </div>
+                <div>
+                    <div class="col-title">Experience</div>
+                    <div class="entry reveal"><div class="when">Jan–Jun 2024 &amp; Jun–Jul 2023</div><div class="what">Software Engineering Intern</div><div class="where">JPMorgan Chase &amp; Co.</div></div>
+                    <div class="entry reveal"><div class="when">Sep 2022 — May 2023</div><div class="what">Co-Founder &amp; Club Head</div><div class="where">Team Quark, VIT Pune</div></div>
+                    <div class="entry reveal"><div class="when">Oct 2021 — Sep 2022</div><div class="what">Software Developer</div><div class="where">The Robotics Forum, VIT Pune</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" style="padding-top:0;">
+        <div class="wrap">
+            <div class="idx-mark">02 — Toolbox</div>
+            <h2 class="big reveal">Skills &amp; <span class="accent">tools.</span></h2>
+        </div>
+        <div class="skills-marquee">
+            <div class="marquee-track">
+                <span>PYTHON <span class="dot">·</span> C++ <span class="dot">·</span> JAVA <span class="dot">·</span> TENSORFLOW <span class="dot">·</span> SCIKIT-LEARN <span class="dot">·</span> PANDAS <span class="dot">·</span> NUMPY <span class="dot">·</span> DJANGO <span class="dot">·</span> AWS <span class="dot">·</span> NODE.JS <span class="dot">·</span></span>
+                <span>PYTHON <span class="dot">·</span> C++ <span class="dot">·</span> JAVA <span class="dot">·</span> TENSORFLOW <span class="dot">·</span> SCIKIT-LEARN <span class="dot">·</span> PANDAS <span class="dot">·</span> NUMPY <span class="dot">·</span> DJANGO <span class="dot">·</span> AWS <span class="dot">·</span> NODE.JS <span class="dot">·</span></span>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="skill-groups-plain">
+                <div class="reveal"><h3>Programming Languages</h3><div class="items">Python<br>C++<br>Java</div></div>
+                <div class="reveal"><h3>Machine Learning</h3><div class="items">TensorFlow<br>Scikit-learn<br>Pandas &amp; NumPy<br>Matplotlib</div></div>
+                <div class="reveal"><h3>Full Stack Development</h3><div class="items">Django<br>AWS · Spring Boot · Node.js<br>HTML · CSS · JavaScript</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="wrap">
+            <div class="idx-mark">03 — Work</div>
+            <h2 class="big reveal">Selected <span class="accent">projects.</span></h2>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                <button class="filter-btn" data-filter="web">Full Stack</button>
+                <button class="filter-btn" data-filter="other">Other</button>
+            </div>
+            <div class="project-list">
+                <a class="project-row reveal" data-cat="ml" href="https://github.com/omkar3602/pneumonia-detector" target="_blank">
+                    <div><div class="title">Pneumonia Detection</div><div class="cat">Machine Learning · CNN &amp; Transfer Learning</div></div>
+                    <div class="thumb"><img src="../images/projects/pneumonia.png" alt=""></div>
+                    <div class="arrow">↗</div>
+                </a>
+                <a class="project-row reveal" data-cat="ml" href="https://github.com/omkar3602/dementia-detection" target="_blank">
+                    <div><div class="title">Dementia Detection</div><div class="cat">Machine Learning</div></div>
+                    <div class="thumb"><img src="../images/projects/dementia.png" alt=""></div>
+                    <div class="arrow">↗</div>
+                </a>
+                <a class="project-row reveal" data-cat="ml" href="https://github.com/omkar3602/heart-disease-prediction" target="_blank">
+                    <div><div class="title">Heart Disease Prediction</div><div class="cat">Machine Learning</div></div>
+                    <div class="thumb"><img src="../images/projects/heart_disease.png" alt=""></div>
+                    <div class="arrow">↗</div>
+                </a>
+                <a class="project-row reveal" data-cat="ml" href="https://github.com/omkar3602/TRF_sudoku_solver" target="_blank">
+                    <div><div class="title">Sudoku Solver</div><div class="cat">Machine Learning · DL &amp; Backtracking</div></div>
+                    <div class="thumb"><img src="../images/projects/sudoku.png" alt=""></div>
+                    <div class="arrow">↗</div>
+                </a>
+                <a class="project-row reveal" data-cat="web" href="https://github.com/omkar3602/Bridgestone-Idea-Management-Platform" target="_blank">
+                    <div><div class="title">Bridgestone IMS</div><div class="cat">Full Stack · Idea Management Platform</div></div>
+                    <div class="thumb"><img src="../images/projects/bridgestone.png" alt=""></div>
+                    <div class="arrow">↗</div>
+                </a>
+                <a class="project-row reveal" data-cat="web" href="https://github.com/omkar3602/TeachAR" target="_blank">
+                    <div><div class="title">TeachAR</div><div class="cat">Full Stack · Immersive AR e-learning</div></div>
+                    <div class="thumb"><img src="../images/projects/teachar.png" alt=""></div>
+                    <div class="arrow">↗</div>
+                </a>
+                <a class="project-row reveal" data-cat="web" href="https://github.com/omkar3602/IAFpedia" target="_blank">
+                    <div><div class="title">IAFpedia</div><div class="cat">Full Stack · Armed Forces Info Portal</div></div>
+                    <div class="thumb"><img src="../images/projects/iafpedia.png" alt=""></div>
+                    <div class="arrow">↗</div>
+                </a>
+                <a class="project-row reveal" data-cat="web" href="https://github.com/omkar3602/TRF_mailing_list" target="_blank">
+                    <div><div class="title">Mailing List Website</div><div class="cat">Full Stack</div></div>
+                    <div class="thumb"><img src="../images/projects/mailing_list.png" alt=""></div>
+                    <div class="arrow">↗</div>
+                </a>
+                <a class="project-row reveal" data-cat="other" href="https://github.com/omkar3602/Flappy_Bird_Game" target="_blank">
+                    <div><div class="title">Flappy Bird Game</div><div class="cat">Other</div></div>
+                    <div class="thumb"><img src="../images/projects/flappy.png" alt=""></div>
+                    <div class="arrow">↗</div>
+                </a>
+                <a class="project-row reveal" data-cat="other" href="https://github.com/omkar3602/Whac-A-Mole-java" target="_blank">
+                    <div><div class="title">Whac-A-Mole Game</div><div class="cat">Other</div></div>
+                    <div class="thumb"><img src="../images/projects/whac_a_mole.png" alt=""></div>
+                    <div class="arrow">↗</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="wrap contact-hero">
+            <div class="idx-mark">04 — Get in touch</div>
+            <h2 class="big reveal">Let's<br>talk<span class="accent">.</span></h2>
+            <p class="lead reveal">Have a role, a project, or just want to say hi?</p>
+            <a class="big-email reveal" href="mailto:omkar3602@gmail.com">omkar3602@gmail.com</a>
+            <div class="contact-meta reveal">
+                <div class="item"><div class="k">Location</div><div class="v">New York, USA</div></div>
+                <div class="item"><div class="k">Status</div><div class="v">Open to opportunities</div></div>
+            </div>
+            <div class="socials-lg reveal">
+                <a href="https://linkedin.com/in/omkar-jahagirdar" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+                <a href="https://github.com/omkar3602" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.44-2.28 1.18-3.08-.12-.29-.51-1.45.11-3.02 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.57.23 2.73.11 3.02.74.8 1.18 1.83 1.18 3.08 0 4.4-2.7 5.38-5.27 5.66.42.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
+                <a href="https://medium.com/@omkar3602" target="_blank" aria-label="Medium"><svg viewBox="0 0 24 24"><path d="M13.54 12a6.72 6.72 0 1 1-13.44 0 6.72 6.72 0 0 1 13.44 0zM20.85 12c0 3.54-1.5 6.42-3.36 6.42-1.85 0-3.35-2.88-3.35-6.42s1.5-6.42 3.35-6.42c1.86 0 3.36 2.87 3.36 6.42zM24 12c0 3.17-.53 5.75-1.18 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75c.65 0 1.18 2.57 1.18 5.75z"/></svg></a>
+            </div>
+            <form class="contact-form-lg reveal" action="https://formsubmit.co/omkar3602@gmail.com" method="POST">
+                <input type="hidden" name="_autoresponse" value="Thank you for using the contact form on my website. I will get back to you shortly.">
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Your name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                </div>
+                <input type="text" name="title" placeholder="Subject" required>
+                <textarea name="message" placeholder="Your message..." required></textarea>
+                <button type="submit">Send message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">
+            <div>Omkar Jahagirdar &copy; <span id="year"></span></div>
+            <div>Built with intent.</div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to top">↑</button>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const backTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => backTop.classList.toggle('show', window.scrollY > 500));
+        backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        const words = ['Artificial Intelligence', 'Full Stack Development', 'AWS', 'Deep Learning'];
+        const typedEl = document.getElementById('typed');
+        let wi = 0, ci = 0, deleting = false;
+        function tick() {
+            const word = words[wi];
+            if (!deleting) { ci++; typedEl.textContent = word.slice(0, ci); if (ci === word.length) { deleting = true; setTimeout(tick, 1400); return; } }
+            else { ci--; typedEl.textContent = word.slice(0, ci); if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; } }
+            setTimeout(tick, deleting ? 40 : 65);
+        }
+        tick();
+
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const rows = document.querySelectorAll('.project-row');
+        filterBtns.forEach(btn => btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const f = btn.dataset.filter;
+            rows.forEach(r => { r.style.display = (f === 'all' || r.dataset.cat === f) ? '' : 'none'; });
+        }));
+    </script>
+</body>
+
+</html>

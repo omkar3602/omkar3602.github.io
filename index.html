@@ -8,892 +8,254 @@
     <title>Omkar Jahagirdar</title>
 
     <link rel="icon" href="./images/icon.png">
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="./style/index.css" rel="stylesheet" type="text/css" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.2/css/all.css"
-        integrity="sha384-zrnmn8R8KkWl12rAZFt4yKjxplaDaT7/EUkKm7AovijfrQItFWR7O/JJn4DAa/gx" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <div class="container">
-        <div class="nav-section">
-            <nav class="navbar navbar-expand-lg navbar-light ">
-                <a class="navbar-brand text-white" href="#">
-                    <img src="./images/icon.png">
-                    Omkar Jahagirdar<span>.</span>
-                </a>
-                <button class="navbar-toggler" style="border: none;" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <i class="text-white fa fa-bars"></i>
-                </button>
+    <div class="mesh"></div>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: var(--orange-color) !important;" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#skills">Skills</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#projects">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://medium.com/@omkar3602" target="_blank">Blogs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                    </ul>
-
-                </div>
-            </nav>
+    <header id="site-header">
+        <nav class="wrap">
+            <a href="#home" class="brand"><img src="./images/icon.png" alt=""><span>Omkar <span class="grad-text">Jahagirdar</span></span></a>
+            <ul class="nav-links">
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="./documents/Omkar_Jahagirdar.pdf" target="_blank" class="nav-cta"><svg class="doc-ic" viewBox="0 0 24 24"><path d="M5.6 1.5A1.9 1.9 0 0 0 3.75 3.4v17.2a1.9 1.9 0 0 0 1.9 1.9h12.7a1.9 1.9 0 0 0 1.9-1.9v-8.35a3.8 3.8 0 0 0-3.8-3.8h-1.9a1.9 1.9 0 0 1-1.9-1.9V5.35a3.8 3.8 0 0 0-3.8-3.8H5.6Z"/><path d="M13 1.8a5.3 5.3 0 0 1 1.3 3.5v1.9c0 .2.15.4.35.4h1.9a5.3 5.3 0 0 1 3.5 1.3A9.9 9.9 0 0 0 13 1.8Z"/></svg>Resume</a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </nav>
+        <div class="mobile-nav" id="mobile-nav">
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a href="./documents/Omkar_Jahagirdar.pdf" target="_blank"><svg class="doc-ic" viewBox="0 0 24 24"><path d="M5.6 1.5A1.9 1.9 0 0 0 3.75 3.4v17.2a1.9 1.9 0 0 0 1.9 1.9h12.7a1.9 1.9 0 0 0 1.9-1.9v-8.35a3.8 3.8 0 0 0-3.8-3.8h-1.9a1.9 1.9 0 0 1-1.9-1.9V5.35a3.8 3.8 0 0 0-3.8-3.8H5.6Z"/><path d="M13 1.8a5.3 5.3 0 0 1 1.3 3.5v1.9c0 .2.15.4.35.4h1.9a5.3 5.3 0 0 1 3.5 1.3A9.9 9.9 0 0 0 13 1.8Z"/></svg>Resume ↓</a>
         </div>
-    </div>
+    </header>
 
-    <!-- Hero section -->
-    <div class="hero-section" id="home">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-ms-6 col-xs-12">
-                    <h3>Hello!</h3>
-                    <h1>I<span style="color: var(--orange-color);">'</span>m Omkar Jahagirdar<span
-                            style="color: var(--orange-color);">.</span></h1>
-                    <h2>I'm interested in <span style="font-weight:bold;color:var(--orange-color)"
-                            class="typing"></span>.</h2>
-                    <p>Welcome to my portfolio website! Here, you can find information about me, my skills, and my
-                        projects. You can download my resume below. Also, feel free to connect with me using below links.</p>
-                    <div class="btn-container animate-animated">
-                        <a href="./documents/Omkar_Jahagirdar.pdf" target="blank_"><button
-                                class="btn btn-light button animate_animated">Download Resume</button></a>
-                    </div>
-                    <div class="social-links">
-                        <a href="
-                        https://linkedin.com/in/omkar-jahagirdar" target="_blank"><i
-                                class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/omkar3602" target="_blank"><i class="fab fa-github"></i></a>
-                    </div>
+    <section class="hero" id="home">
+        <div class="wrap hero-grid">
+            <div>
+                <div class="eyebrow">● Available for full-time opportunities</div>
+                <h1>Building <span class="grad-text">AI</span> and full-stack systems that improve everyday life.</h1>
+                <div class="role mono">$ interests --list <span id="typed"></span><span class="cursor">&nbsp;</span></div>
+                <p class="bio">I'm Omkar, a Computer Science grad student at Stony Brook University and former Software Engineering Intern at JPMorgan Chase &amp; Co. I design and ship products across AI, deep learning, and full-stack systems.</p>
+                <div class="hero-actions">
+                    <a href="./documents/Omkar_Jahagirdar.pdf" target="_blank" class="btn-primary"><svg class="doc-ic" viewBox="0 0 24 24"><path d="M5.6 1.5A1.9 1.9 0 0 0 3.75 3.4v17.2a1.9 1.9 0 0 0 1.9 1.9h12.7a1.9 1.9 0 0 0 1.9-1.9v-8.35a3.8 3.8 0 0 0-3.8-3.8h-1.9a1.9 1.9 0 0 1-1.9-1.9V5.35a3.8 3.8 0 0 0-3.8-3.8H5.6Z"/><path d="M13 1.8a5.3 5.3 0 0 1 1.3 3.5v1.9c0 .2.15.4.35.4h1.9a5.3 5.3 0 0 1 3.5 1.3A9.9 9.9 0 0 0 13 1.8Z"/></svg>Download resume</a>
+                    <a href="#contact" class="btn-ghost">Get in touch</a>
                 </div>
-                <div class="col-lg-6 col-md-6 col-ms-6 col-xs-12">
-                    <img src="./images/photo.png" class="center">
+                <div class="socials">
+                    <a href="https://linkedin.com/in/omkar-jahagirdar" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+                    <a href="https://github.com/omkar3602" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.44-2.28 1.18-3.08-.12-.29-.51-1.45.11-3.02 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.57.23 2.73.11 3.02.74.8 1.18 1.83 1.18 3.08 0 4.4-2.7 5.38-5.27 5.66.42.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- About me section -->
-    <div class="about-section" id="about">
-        <h1 class="about-section-title"><br><br>About Me<span style="color:var(--orange-color)">.</span></h1>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-6 col-ms-12 col-xs-12">
-                    <div class="qual-container container">
-                        <div class="qual-tabs">
-
-                            <span class="qual-button button--flex qual-active" data-target="#education">
-                                <i class="fas fa-graduation-cap qual-icon"></i>
-                                Education
-                            </span>
-
-                            &nbsp; &nbsp; &nbsp;
-
-                            <span class="qual-button button--flex" data-target="#experience">
-                                <i class="fas fa-suitcase qual-icon"></i>
-                                Experience
-                            </span>
-
-                            <br><br><br>
-
-                            <section class="qualification section">
-                                <div class="qual-sections">
-                                    <div class="qual-content qual-active" data-content id="education">
-                                        <div class="qual-data">
-                                            <div></div>
-                                            <div>
-                                                <span class="qual-rounder"></span>
-                                                <span class="qual-line"></span>
-                                            </div>
-                                            <div>
-                                                <h5 class="qual-title">Masters in Computer Science</h5>
-                                                <h8><span class="qual-subtitle">Stony Brook University, New York, USA</span></h8>
-                                                <div style="color:var(--white-color);
-                                                font-size: 15px; font-style: italic; font-weight: 500;">
-                                                    
-                                                </div>
-                                                <div class="qual-calender"
-                                                    style="color:var(--secondary-color); font-size: 12px;">
-                                                    <i class="fas fa-calendar-week"></i>
-                                                    Aug 2024 - Current
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="qual-data">
-                                            <div>
-                                                <h5 class="qual-title">B.Tech Computer Engineering</h5>
-                                                <h8><span class="qual-subtitle">Vishwakarma Institute of Technology,
-                                                        Pune</span></h8>
-                                                <div style="color:var(--white-color);
-                                                font-size: 15px; font-style: italic; font-weight: 500;">
-                                                    CGPA: 9.1
-                                                </div>
-                                                <div class="qual-calender"
-                                                    style="color:var(--secondary-color); font-size: 12px;">
-                                                    <i class="fas fa-calendar-week"></i>
-                                                    Jul 2020 - May 2024
-                                                </div>
-
-                                            </div>
-
-                                            <div>
-                                                <span class="qual-rounder"></span>
-                                                <span class="qual-line"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="qual-data">
-                                            <div></div>
-
-                                            <div>
-                                                <span class="qual-rounder"></span>
-                                                <span class="qual-line"></span>
-                                            </div>
-
-                                            <div>
-                                                <h5 class="qual-title">HSC </h5>
-                                                <h8><span class="qual-subtitle">D.A.V. Public School,
-                                                        Pune</span></h8>
-                                                <div style="color:var(--white-color);
-                                                font-size: 15px; font-style: italic; font-weight: 500;">
-                                                    Percentage: 91.2%
-                                                </div>
-                                                <div class="qual-calender"
-                                                    style="color:var(--secondary-color); font-size: 12px;">
-                                                    <i class="fas fa-calendar-week"></i>
-                                                    Jun 2018 - Mar 2020
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="qual-data">
-
-
-                                            <div>
-                                                <h5 class="qual-title">SSC </h5>
-                                                <h8><span class="qual-subtitle">D.A.V. Public School,
-                                                        Pune</span></h8>
-                                                <div style="color:var(--white-color);
-                                                font-size: 15px; font-style: italic; font-weight: 500;">
-                                                    Percentage: 91.8%
-                                                </div>
-                                                <div class="qual-calender"
-                                                    style="color:var(--secondary-color); font-size: 12px;">
-                                                    <i class="fas fa-calendar-week"></i>
-                                                    Jun 2012 - Mar 2018
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <span class="qual-rounder"></span>
-                                                <!-- <span class="qual-line"></span> -->
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="qual-content" data-content id="experience">
-
-                                        <div class="qual-data">
-
-                                            <div>
-                                                <h5 class="qual-title">Software Engineering Intern</h5>
-                                                <h8><span class="qual-subtitle">JPMorgan Chase & Co.</span></h8>
-                                                <div class="qual-calender"
-                                                    style="color:var(--secondary-color); font-size: 12px;">
-                                                    <i class="fas fa-calendar-week"></i>
-                                                    Jan 2024 - Jun 2024
-                                                </div>
-                                                <div class="qual-calender"
-                                                    style="color:var(--secondary-color); font-size: 12px;">
-                                                    <i class="fas fa-calendar-week"></i>
-                                                    Jun 2023 - Jul 2023
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <span class="qual-rounder"></span>
-                                                <span class="qual-line"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="qual-data">
-                                            <div></div>
-                                            <div>
-                                                <span class="qual-rounder"></span>
-                                                <span class="qual-line"></span>
-                                            </div>
-                                            <div>
-                                                <h5 class="qual-title">Co-Founder and Club Head</h5>
-                                                <h8><span class="qual-subtitle">Team Quark <br>VIT,
-                                                        Pune</span></h8>
-                                                <div class="qual-calender"
-                                                    style="color:var(--secondary-color); font-size: 12px;">
-                                                    <i class="fas fa-calendar-week"></i>
-                                                    Sep 2022 - May 2023
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="qual-data">
-                                            <div>
-                                                <h5 class="qual-title">Software Developer</h5>
-                                                <h8><span class="qual-subtitle">The Robotics Forum <br>VIT, Pune</span>
-                                                </h8>
-                                                <div class="qual-calender"
-                                                    style="color:var(--secondary-color); font-size: 12px;">
-                                                    <i class="fas fa-calendar-week"></i>
-                                                    Oct 2021 - Sep 2022
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span class="qual-rounder"></span>
-                                                <!-- <span class="qual-line"></span> -->
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </section>
-
-                        </div>
-                    </div>
-                </div>
+            <div class="hero-photo">
+                <div class="glow"></div>
+                <div class="frame"><img src="./images/photo.png" alt="Omkar Jahagirdar"></div>
+                <div class="badge"><span class="dot"></span> OPEN TO WORK</div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Skills section -->
-    <div class="skills-section" id="skills">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-ms-24 col-xs-24 skills-up">
-                    <h1 style="text-align: center;"><br><br>My Skills<span style="color:var(--orange-color)">.</span>
-                    </h1>
-                </div>
-                <div class="col-lg-12 col-md-12 col-ms-24 col-xs-24 skills-down">
-                    <div class="skills-container container grid">
+    <section id="experience">
+        <div class="wrap">
+            <div class="eyebrow">Career</div>
+            <h2 class="big reveal">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="when">May 2025 - Aug 2025</div>
+                    <div class="entry-body">
+                        <img class="entry-logo" src="./images/logos/sculptsoft.png" alt="SculptSoft logo">
                         <div>
-                            <!-- Skill 1 -->
-                            <div class="skills-content">
-                                <div class="skills-header mt-5">
-                                    <i class="fas fa-code skills-icon"
-                                        style="color:var(--orange-color-2); font-size: 22px; cursor: pointer;"></i>
-                                    &ensp;
-                                    <div style="display: inline-block;">
-                                        <h5 class="skills-title" style="color:var(--white-color);">Programming Languages
-                                        </h5>
-                                    </div>
-                                    &ensp;
-                                </div>
-
-                                <div class="skills-list grid">
-                                    <div class="skills-data">
-                                        <div class="skills-titles"
-                                            style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                            <h7 class="skills-name">Python</h7>
-                                            <span class="skills-number">90%</span>
-                                        </div>
-                                        <div class="skills-bar"
-                                            style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                            <span class="skills-percentage skills-python"
-                                                style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 90%;">
-
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div class="skills-data">
-                                        <div class="skills-titles"
-                                            style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                            <h7 class="skills-name">C++</h7>
-                                            <span class="skills-number">75%</span>
-                                        </div>
-                                        <div class="skills-bar"
-                                            style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                            <span class="skills-percentage skills-cpp"
-                                                style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 75%;">
-
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div class="skills-data">
-                                        <div class="skills-titles"
-                                            style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                            <h7 class="skills-name">Java</h7>
-                                            <span class="skills-number">70%</span>
-                                        </div>
-                                        <div class="skills-bar"
-                                            style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                            <span class="skills-percentage skills-java"
-                                                style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 70%; ">
-
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                &nbsp
-                                <!-- Skill 2 -->
-                                <div class="skills-content" style="margin-top: 100px;">
-                                    <div class="skills-header">
-                                        <i class="fas fa-brain skills-icon"
-                                            style="color:var(--orange-color); font-size: 22px; cursor: pointer;"></i>
-                                        &ensp;
-                                        <div style="display: inline-block;">
-                                            <h5 class="skills-title" style="color:var(--white-color);">Machine Learning
-                                            </h5>
-                                        </div>
-                                        &ensp;
-                                    </div>
-
-
-                                    <div class="skills-list grid">
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">TensorFlow</h7>
-                                                <span class="skills-number">75%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-tensorflow"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 75%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">Scikit-learn</h7>
-                                                <span class="skills-number">80%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-tensorflow"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 80%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">Pandas</h7>
-                                                <span class="skills-number">80%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-tensorflow"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 80%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">NumPy</h7>
-                                                <span class="skills-number">75%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-tensorflow"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 75%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">Matplotlib</h7>
-                                                <span class="skills-number">70%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-tensorflow"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 70%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Skill 3 -->
-                                <div class="skills-content" style="margin-top: 100px;">
-                                    <div class="skills-header">
-                                        <i class="fas fa-globe skills-icon"
-                                            style="color:var(--orange-color); font-size: 22px; cursor: pointer;"></i>
-                                        &ensp;
-                                        <div style="display: inline-block;">
-                                            <h5 class="skills-title" style="color:var(--white-color);">Full Stack Development
-                                            </h5>
-                                        </div>
-                                        &ensp;
-                                    </div>
-
-
-                                    <div class="skills-list grid">
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">Django</h7>
-                                                <span class="skills-number">90%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-html"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 90%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">AWS</h7>
-                                                <span class="skills-number">70%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-html"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 70%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">Springboot</h7>
-                                                <span class="skills-number">70%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-html"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 70%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">Node.js</h7>
-                                                <span class="skills-number">70%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-html"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 70%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">HTML</h7>
-                                                <span class="skills-number">100%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-html"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 100%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">CSS</h7>
-                                                <span class="skills-number">70%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-html"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 70%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="skills-data">
-                                            <div class="skills-titles"
-                                                style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
-                                                <h7 class="skills-name">JavaScript</h7>
-                                                <span class="skills-number">80%</span>
-                                            </div>
-                                            <div class="skills-bar"
-                                                style="height: 5px; border-radius: 0.25rem; background-color: var(--secondary-color);">
-                                                <span class="skills-percentage skills-html"
-                                                    style="display: block;height: 5px; border-radius: 0.25rem; background-color: var(--orange-color-2) !important;width: 80%;">
-
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="what">Software Engineering Intern</div>
+                            <div class="where">SculptSoft LLC., San Francisco, CA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="when">Jan 2024 - Jun 2024</div>
+                    <div class="entry-body">
+                        <img class="entry-logo" src="./images/logos/jpmc.png" alt="JPMorgan Chase &amp; Co. logo">
+                        <div>
+                            <div class="what">Software Engineering Intern</div>
+                            <div class="where">JPMorgan Chase &amp; Co., Mumbai, India</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="when">Jun 2023 - Jul 2023</div>
+                    <div class="entry-body">
+                        <img class="entry-logo" src="./images/logos/jpmc.png" alt="JPMorgan Chase &amp; Co. logo">
+                        <div>
+                            <div class="what">Software Engineering Intern</div>
+                            <div class="where">JPMorgan Chase &amp; Co., Bangalore, India</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Projects section -->
-    <div class="projects-section" id="projects">
-        <h1 class="text-white text-center projects-section-title"><br><br>My Projects<span
-                style="color:var(--orange-color)">.</span></h1>
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <nav class="d-flex justify-content-center">
-                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-ML" role="tab"
-                                aria-controls="nav-ML" id="nav-ML-tab" aria-selected="true">Machine
-                                Learning / Deep Learning</a>
-                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-WEB" role="tab"
-                                aria-controls="nav-WEB" id="nav-WEB-tab" aria-selected="false">Full Stack Development</a>
-                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-OTH" role="tab"
-                                aria-controls="nav-OTH" id="nav-OTH-tab" aria-selected="false">Other</a>
+    <section id="education">
+        <div class="wrap">
+            <div class="eyebrow">Background</div>
+            <h2 class="big reveal">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="when">Aug 2024 - May 2026</div>
+                    <div class="entry-body">
+                        <img class="entry-logo" src="./images/logos/sbu.png" alt="Stony Brook University logo">
+                        <div>
+                            <div class="what">Masters in Computer Science</div>
+                            <div class="where">Stony Brook University, New York, USA</div>
+                            <div class="meta">Concentration in Data Science</div>
                         </div>
-                    </nav>
-                    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-ML" role="tabpanel" aria-labelledby="nav-ML-tab">
-                            <div class="card-columns">
-                                <div class="card border-0 padding-0">
-                                    <div class="content">
-                                        <a class="project-card" href="https://github.com/omkar3602/pneumonia-detector"
-                                            target="blank_">
-                                            <div class="content-overlay"></div>
-                                            <img class="card-img-top content-image"
-                                                src="./images/projects/pneumonia.png" />
-                                            <div class="content-details fadeIn-bottom">
-                                                <button class="btn"><i class="fab fa-github"></i></button>
-                                            </div>
-                                            <p style="color: var(--orange-color); margin-top: 15px;"
-                                                class="text-center">
-                                                Pneumonia Detection using CNN and Transfer Learning</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="card border-0 padding-0">
-                                    <div class="content">
-                                        <a class="project-card" href="https://github.com/omkar3602/dementia-detection"
-                                            target="blank_">
-                                            <div class="content-overlay"></div>
-                                            <img class="card-img-top content-image"
-                                                src="./images/projects/dementia.png" />
-                                            <div class="content-details fadeIn-bottom">
-                                                <button class="btn"><i class="fab fa-github"></i></button>
-                                            </div>
-                                            <p style="color: var(--orange-color); margin-top: 15px;"
-                                                class="text-center">
-                                                Dementia Detection</p>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 padding-0">
-                                    <div class="content">
-                                        <a class="project-card"
-                                            href="https://github.com/omkar3602/heart-disease-prediction"
-                                            target="blank_">
-                                            <div class="content-overlay"></div>
-                                            <img class="card-img-top content-image"
-                                                src="./images/projects/heart_disease.png" />
-                                            <div class="content-details fadeIn-bottom">
-                                                <button class="btn"><i class="fab fa-github"></i></button>
-                                            </div>
-                                            <p style="color: var(--orange-color); margin-top: 15px;"
-                                                class="text-center">
-                                                Heart Disease Prediction using Machine Learning</p>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 padding-0">
-                                    <div class="content">
-                                        <a class="project-card" href="https://github.com/omkar3602/TRF_sudoku_solver"
-                                            target="blank_">
-                                            <div class="content-overlay"></div>
-                                            <img class="card-img-top content-image"
-                                                src="./images/projects/sudoku.png" />
-                                            <div class="content-details fadeIn-bottom">
-                                                <button class="btn"><i class="fab fa-github"></i></button>
-                                            </div>
-                                            <p style="color: var(--orange-color); margin-top: 15px;"
-                                                class="text-center">
-                                                Sudoku solver using Deep Learning and Backtracking algorithms</p>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="nav-WEB" role="tabpanel" aria-labelledby="nav-WEB-tab">
-                            <div class="card-columns">
-                                <div class="card border-0 padding-0">
-                                    <div class="content">
-                                        <a class="project-card" href="https://github.com/omkar3602/Bridgestone-Idea-Management-Platform"
-                                            target="blank_">
-                                            <div class="content-overlay"></div>
-                                            <img class="card-img-top content-image"
-                                                src="./images/projects/bridgestone.png" />
-                                            <div class="content-details fadeIn-bottom">
-                                                <button class="btn"><i class="fab fa-github"></i></button>
-                                            </div>
-                                            <p style="color: var(--orange-color); margin-top: 15px;"
-                                                class="text-center">
-                                                Bridgestone Idea Management Platform</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="card border-0 padding-0">
-                                    <div class="content">
-                                        <a class="project-card" href="https://github.com/omkar3602/TeachAR"
-                                            target="blank_">
-                                            <div class="content-overlay"></div>
-                                            <img class="card-img-top content-image"
-                                                src="./images/projects/teachar.png" />
-                                            <div class="content-details fadeIn-bottom">
-                                                <button class="btn"><i class="fab fa-github"></i></button>
-                                            </div>
-                                            <p style="color: var(--orange-color); margin-top: 15px;"
-                                                class="text-center">
-                                                TeachAR: An e-learning AR application for immersive learning</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="card border-0 padding-0">
-                                    <div class="content">
-                                        <a class="project-card" href="https://github.com/omkar3602/IAFpedia"
-                                            target="blank_">
-                                            <div class="content-overlay"></div>
-                                            <img class="card-img-top content-image"
-                                                src="./images/projects/iafpedia.png" />
-                                            <div class="content-details fadeIn-bottom">
-                                                <button class="btn"><i class="fab fa-github"></i></button>
-                                            </div>
-                                            <p style="color: var(--orange-color); margin-top: 15px;"
-                                                class="text-center">
-                                                IAFpedia - An information portal about the Indian Armed Forces</p>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 padding-0">
-                                    <div class="content">
-                                        <a class="project-card" href="https://github.com/omkar3602/TRF_mailing_list"
-                                            target="blank_">
-                                            <div class="content-overlay"></div>
-                                            <img class="card-img-top content-image"
-                                                src="./images/projects/mailing_list.png" />
-                                            <div class="content-details fadeIn-bottom">
-                                                <button class="btn"><i class="fab fa-github"></i></button>
-                                            </div>
-                                            <p style="color: var(--orange-color); margin-top: 15px;"
-                                                class="text-center">
-                                                Mailing list website</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="nav-OTH" role="tabpanel" aria-labelledby="nav-OTH-tab">
-                            <div class="card-columns">
-                                <div class="card border-0 padding-0">
-                                    <div class="content">
-                                        <a class="project-card" href="https://github.com/omkar3602/Flappy_Bird_Game"
-                                            target="blank_">
-                                            <div class="content-overlay"></div>
-                                            <img class="card-img-top content-image"
-                                                src="./images/projects/flappy.png" />
-                                            <div class="content-details fadeIn-bottom">
-                                                <button class="btn"><i class="fab fa-github"></i></button>
-                                            </div>
-                                            <p style="color: var(--orange-color); margin-top: 15px;"
-                                                class="text-center">
-                                                Flappy Bird Game</p>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="card border-0 padding-0">
-                                    <div class="content">
-                                        <a class="project-card" href="https://github.com/omkar3602/Whac-A-Mole-java"
-                                            target="blank_">
-                                            <div class="content-overlay"></div>
-                                            <img class="card-img-top content-image"
-                                                src="./images/projects/whac_a_mole.png" />
-                                            <div class="content-details fadeIn-bottom">
-                                                <button class="btn"><i class="fab fa-github"></i></button>
-                                            </div>
-                                            <p style="color: var(--orange-color); margin-top: 15px;"
-                                                class="text-center">
-                                                Whac-A-Mole Game</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="when">Jul 2020 - May 2024</div>
+                    <div class="entry-body">
+                        <img class="entry-logo" src="./images/logos/vitpune.png" alt="Vishwakarma Institute of Technology logo">
+                        <div>
+                            <div class="what">B.Tech, Computer Science</div>
+                            <div class="where">Vishwakarma Institute of Technology, Pune, India</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Contact section -->
-    <div class="contact-section" id="contact">
-        <div class="container">
-            <div class="row m-0">
-                <div class="col-lg-12 col-md-12 col-sm-24 col-xs-24">
-                    <p><br></p>
+    <section id="skills">
+        <div class="wrap">
+            <div class="eyebrow">Toolbox</div>
+            <h2 class="big reveal">Skills &amp; tools</h2>
+            <div class="skills-bento" style="margin-top:40px;">
+                <div class="panel skill-card reveal">
+                    <h3><span class="ic">◆</span> Programming Languages</h3>
+                    <div class="skill-bar-row"><div class="skill-bar-top"><span>Python</span><span>90%</span></div><div class="skill-track"><div class="skill-fill" data-w="90"></div></div></div>
+                    <div class="skill-bar-row"><div class="skill-bar-top"><span>C++</span><span>75%</span></div><div class="skill-track"><div class="skill-fill" data-w="75"></div></div></div>
+                    <div class="skill-bar-row"><div class="skill-bar-top"><span>Java</span><span>70%</span></div><div class="skill-track"><div class="skill-fill" data-w="70"></div></div></div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <h3 class="heading">Contact Me<span style="color: var(--orange-color);">.</span></h3>
-                    <hr class="hr">
-                    <p class="txt">Feel free to contact me</p>
-                    <form action="https://formsubmit.co/omkar3602@gmail.com" method="POST">
-                        <input type="hidden" name="_autoresponse"
-                            value="Thank you for using the contact form on my website. I will get back to you shortly.">
-                        <div class="form-group">
-                            <input class="form-control" name="name" placeholder="Your Full Name" type="text" required>
+                <div class="panel skill-card reveal">
+                    <h3><span class="ic">◆</span> Machine Learning</h3>
+                    <div class="skill-bar-row"><div class="skill-bar-top"><span>TensorFlow</span><span>75%</span></div><div class="skill-track"><div class="skill-fill" data-w="75"></div></div></div>
+                    <div class="skill-bar-row"><div class="skill-bar-top"><span>Scikit-learn</span><span>80%</span></div><div class="skill-track"><div class="skill-fill" data-w="80"></div></div></div>
+                    <div class="skill-bar-row"><div class="skill-bar-top"><span>Pandas / NumPy</span><span>78%</span></div><div class="skill-track"><div class="skill-fill" data-w="78"></div></div></div>
+                    <div class="skill-bar-row"><div class="skill-bar-top"><span>Matplotlib</span><span>70%</span></div><div class="skill-track"><div class="skill-fill" data-w="70"></div></div></div>
+                </div>
+                <div class="panel skill-card reveal">
+                    <h3><span class="ic">◆</span> Full Stack Development</h3>
+                    <div class="skill-bar-row"><div class="skill-bar-top"><span>Django</span><span>90%</span></div><div class="skill-track"><div class="skill-fill" data-w="90"></div></div></div>
+                    <div class="skill-bar-row"><div class="skill-bar-top"><span>HTML / CSS / JS</span><span>85%</span></div><div class="skill-track"><div class="skill-fill" data-w="85"></div></div></div>
+                    <div class="skill-bar-row"><div class="skill-bar-top"><span>AWS / Node.js / Spring Boot</span><span>70%</span></div><div class="skill-track"><div class="skill-fill" data-w="70"></div></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="wrap">
+            <div class="eyebrow">Work</div>
+            <h2 class="big reveal">Projects</h2>
+            <div class="filters" style="margin-top:32px;">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                <button class="filter-btn" data-filter="web">Full Stack</button>
+                <button class="filter-btn" data-filter="other">Other</button>
+            </div>
+            <div class="project-grid">
+                <a class="project-card reveal" data-cat="ml" href="https://github.com/omkar3602/pneumonia-detector" target="_blank">
+                    <div class="thumb"><img src="./images/projects/pneumonia.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Machine Learning</div><div class="project-title">Pneumonia Detection using CNN &amp; Transfer Learning</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="project-card reveal" data-cat="ml" href="https://github.com/omkar3602/dementia-detection" target="_blank">
+                    <div class="thumb"><img src="./images/projects/dementia.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Machine Learning</div><div class="project-title">Dementia Detection</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="project-card reveal" data-cat="ml" href="https://github.com/omkar3602/heart-disease-prediction" target="_blank">
+                    <div class="thumb"><img src="./images/projects/heart_disease.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Machine Learning</div><div class="project-title">Heart Disease Prediction</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="project-card reveal" data-cat="ml" href="https://github.com/omkar3602/TRF_sudoku_solver" target="_blank">
+                    <div class="thumb"><img src="./images/projects/sudoku.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Machine Learning</div><div class="project-title">Sudoku Solver: Deep Learning &amp; Backtracking</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="project-card reveal" data-cat="web" href="https://github.com/omkar3602/Bridgestone-Idea-Management-Platform" target="_blank">
+                    <div class="thumb"><img src="./images/projects/bridgestone.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Full Stack</div><div class="project-title">Bridgestone Idea Management Platform</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="project-card reveal" data-cat="web" href="https://github.com/omkar3602/TeachAR" target="_blank">
+                    <div class="thumb"><img src="./images/projects/teachar.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Full Stack</div><div class="project-title">TeachAR: Immersive AR e-learning</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="project-card reveal" data-cat="web" href="https://github.com/omkar3602/IAFpedia" target="_blank">
+                    <div class="thumb"><img src="./images/projects/iafpedia.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Full Stack</div><div class="project-title">IAFpedia: Indian Armed Forces info portal</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="project-card reveal" data-cat="web" href="https://github.com/omkar3602/TRF_mailing_list" target="_blank">
+                    <div class="thumb"><img src="./images/projects/mailing_list.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Full Stack</div><div class="project-title">Mailing List Website</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="project-card reveal" data-cat="other" href="https://github.com/omkar3602/Flappy_Bird_Game" target="_blank">
+                    <div class="thumb"><img src="./images/projects/flappy.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Other</div><div class="project-title">Flappy Bird Game</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="project-card reveal" data-cat="other" href="https://github.com/omkar3602/Whac-A-Mole-java" target="_blank">
+                    <div class="thumb"><img src="./images/projects/whac_a_mole.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Other</div><div class="project-title">Whac-A-Mole Game</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="wrap">
+            <div class="panel contact-panel reveal">
+                <div class="contact-left">
+                    <div class="eyebrow">Get in touch</div>
+                    <h2 class="big">Let's build something.</h2>
+                    <p class="lead">Have a role, a project, or just want to say hi? My inbox is open.</p>
+                    <div class="stat-row">
+                        <div class="item"><span class="ic"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm18.5 2.4L12 12.2 3.5 6.4V6L12 11.4 20.5 6v.4z"/></svg></span> <a href="mailto:omkar3602@gmail.com">omkar3602@gmail.com</a></div>
+                        <div class="item"><span class="ic">📍</span> New York, USA</div>
+                    </div>
+                    <div class="socials">
+                        <a href="https://linkedin.com/in/omkar-jahagirdar" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+                        <a href="https://github.com/omkar3602" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.44-2.28 1.18-3.08-.12-.29-.51-1.45.11-3.02 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.57.23 2.73.11 3.02.74.8 1.18 1.83 1.18 3.08 0 4.4-2.7 5.38-5.27 5.66.42.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
+                        <a href="https://medium.com/@omkar3602" target="_blank" aria-label="Medium"><svg viewBox="0 0 24 24"><path d="M13.54 12a6.72 6.72 0 1 1-13.44 0 6.72 6.72 0 0 1 13.44 0zM20.85 12c0 3.54-1.5 6.42-3.36 6.42-1.85 0-3.35-2.88-3.35-6.42s1.5-6.42 3.35-6.42c1.86 0 3.36 2.87 3.36 6.42zM24 12c0 3.17-.53 5.75-1.18 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75c.65 0 1.18 2.57 1.18 5.75z"/></svg></a>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <form class="contact-form" action="https://formsubmit.co/omkar3602@gmail.com" method="POST">
+                        <input type="hidden" name="_autoresponse" value="Thank you for using the contact form on my website. I will get back to you shortly.">
+                        <div class="form-row">
+                            <input type="text" name="name" placeholder="Your name" required>
+                            <input type="email" name="email" placeholder="Your email" required>
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" name="email" placeholder="Your Email Address" type="email"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" name="title" placeholder="Title" type="text" required>
-                        </div>
-                        <textarea class="form-control" name="message" placeholder="Your message..." required></textarea>
-                        <br>
-                        <div class="form-group">
-                            <button class="btn btn-light animate__animated" type="submit">Submit</button>
-                        </div>
+                        <input type="text" name="title" placeholder="Subject" required>
+                        <textarea name="message" placeholder="Your message..." required></textarea>
+                        <button type="submit">Send message</button>
                     </form>
-                    <br><br>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="link" href="mailto:omkar3602@gmail.com">
-                                    <i class="fa fa-envelope-o"></i> &ensp; omkar3602@gmail.com
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <br>
-                    <div class="map_wrapper map-responsive">
-                        <div class="mapouter">
-                            <div class="gmap-canvas">
-                                <iframe width="525" height="327" id="gmap-canvas"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242117.68101415085!2d73.72287697165856!3d18.5248904246261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sus!4v1664827580686!5m2!1sen!2sus"
-                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-                                </iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br><br>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer-area" id="footer">
-        <div class="container">
-            <div class="row py-5">
-                <div class="logo-area col-lg-4 col-md-4 col-sm-12 col-12">
-                    <div class="navbar-brand text-white text-center" href="#home">
-                        Omkar Jahagirdar<span style="font-weight:bolder;color:var(--orange-color)">.</span>
-                    </div>
-                    <div class="links">
-                        <a href="mailto: omkar3602@gmail.com" target="_blank"><i
-                                class="fas fa-envelope animate_animated"></i></a>
-                        <a href="https://linkedin.com/in/omkar-jahagirdar" target="_blank"><i
-                                class="fab fa-linkedin animate_animated"></i></a>
-                        <a href="https://twitter.com/omkar_j3602" target="_blank"><i
-                                class="fab fa-twitter animate_animated"></i></a>
-                        <br><br>
-                        <a href="https://github.com/omkar3602" target="_blank"><i
-                                class="fab fa-github animate_animated"></i></a>
-                        <a href="https://medium.com/@omkar3602" target="_blank"><i
-                                class="fab fa-medium-m animate_animated"></i></a>
-                        <a href="https://instagram.com/omkar_j3602" target="_blank"><i
-                                class="fab fa-instagram animate_animated"></i></a>
-
-                    </div>
                 </div>
             </div>
         </div>
-        <p class="text-center">Omkar Jahagirdar<br>Copyright © <span id="year" style="margin-top: 13px; color: var(--secondary-color); font-size: 12px;"></span></p>
-    </div>
-    
-    <div id="particles-js"></div>
-    <button id="back-to-top" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    <script>
-        document.getElementById('year').innerHTML = new Date().getFullYear();
-    </script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script type="text/javascript" src="./js/app.js"></script>
+    </section>
 
-    <script type="text/javascript" src="./js/script.js"></script>
+    <footer>
+        <div class="wrap">
+            <div>Omkar Jahagirdar &copy; <span id="year"></span></div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to top">↑</button>
+
+    <script type="text/javascript" src="./js/main.js"></script>
 </body>
 
 </html>

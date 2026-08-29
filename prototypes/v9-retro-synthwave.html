@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omkar Jahagirdar — Portfolio</title>
+    <link rel="icon" href="../images/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #170B2E;
+            --bg-2: #1F0F3D;
+            --panel: #23124A;
+            --line: #3E2470;
+            --ink: #F1EBFF;
+            --ink-soft: #A896D9;
+            --pink: #FF2E88;
+            --cyan: #00E5FF;
+            --yellow: #FFD23D;
+            --grad-sun: linear-gradient(180deg, var(--yellow), var(--pink) 60%, var(--cyan));
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        .display { font-family: 'Orbitron', sans-serif; }
+
+        .wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+
+        .glow-border { border: 1px solid var(--line); box-shadow: 0 0 0 1px rgba(255,46,136,0.08), 0 0 24px -8px rgba(0,229,255,0.25); background: rgba(35,18,74,0.6); backdrop-filter: blur(6px); }
+
+        /* Nav */
+        header { position: sticky; top: 0; z-index: 100; background: rgba(23,11,46,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+        nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+        .brand { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 10px; letter-spacing: 0.02em; }
+        .brand img { width: 28px; border-radius: 8px; filter: drop-shadow(0 0 6px var(--pink)); }
+        .brand span { background: var(--grad-sun); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 6px; list-style: none; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+        .nav-links a { color: var(--ink-soft); padding: 9px 16px; border-radius: 6px; display: block; transition: all 0.2s ease; border-bottom: 2px solid transparent; }
+        .nav-links a:hover { color: var(--cyan); border-bottom-color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
+        .nav-cta { font-family: 'Orbitron', sans-serif; background: transparent; border: 1px solid var(--pink); color: var(--pink) !important; font-weight: 700; font-size: 12.5px; padding: 11px 20px; border-radius: 6px; transition: all 0.2s ease; text-transform: uppercase; }
+        .nav-cta:hover { background: var(--pink); color: var(--bg) !important; box-shadow: 0 0 20px -4px var(--pink); }
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+        .menu-toggle span { width: 22px; height: 2px; background: var(--cyan); }
+
+        section { padding: 130px 0; position: relative; }
+
+        .eyebrow { font-family: 'Orbitron', sans-serif; font-size: 12px; color: var(--cyan); letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px; text-shadow: 0 0 10px rgba(0,229,255,0.6); }
+        .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--cyan); box-shadow: 0 0 6px var(--cyan); }
+
+        h2.big { font-family: 'Orbitron', sans-serif; font-size: clamp(26px, 3.6vw, 40px); font-weight: 800; letter-spacing: -0.01em; margin-bottom: 48px; max-width: 640px; }
+        h2.big .grad { background: var(--grad-sun); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+        /* Hero */
+        .hero { min-height: 90vh; display: flex; align-items: center; padding-top: 60px; position: relative; }
+        .horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 340px; overflow: hidden; z-index: -1; opacity: 0.5; }
+        .horizon .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,229,255,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.35) 1px, transparent 1px); background-size: 60px 60px; transform: perspective(300px) rotateX(60deg); transform-origin: bottom; }
+        .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center; }
+        .hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(34px, 5vw, 58px); font-weight: 800; letter-spacing: -0.01em; line-height: 1.15; }
+        .hero h1 .grad { background: var(--grad-sun); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero .role { margin-top: 22px; font-size: clamp(16px, 2vw, 20px); font-weight: 600; color: var(--pink); text-shadow: 0 0 12px rgba(255,46,136,0.5); min-height: 26px; }
+        .hero .role .cursor { display: inline-block; width: 2px; background: var(--pink); margin-left: 2px; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .hero p.bio { margin-top: 22px; max-width: 480px; color: var(--ink-soft); font-size: 16.5px; }
+        .hero-actions { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+        .btn-primary { font-family: 'Orbitron', sans-serif; background: var(--pink); color: #170B2E; padding: 15px 26px; border-radius: 6px; font-weight: 700; font-size: 12.5px; text-transform: uppercase; box-shadow: 0 0 26px -6px var(--pink); transition: transform 0.2s ease; }
+        .btn-primary:hover { transform: translateY(-2px); }
+        .btn-ghost { font-family: 'Orbitron', sans-serif; border: 1px solid var(--cyan); color: var(--cyan); padding: 14px 24px; border-radius: 6px; font-weight: 700; font-size: 12.5px; text-transform: uppercase; transition: all 0.2s ease; }
+        .btn-ghost:hover { background: var(--cyan); color: var(--bg); box-shadow: 0 0 20px -4px var(--cyan); }
+        .socials { display: flex; gap: 14px; margin-top: 30px; }
+        .socials a { width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--ink-soft); transition: all 0.2s ease; }
+        .socials a:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 16px -4px var(--cyan); }
+        .socials svg { width: 16px; height: 16px; fill: currentColor; }
+
+        .hero-photo { position: relative; }
+        .hero-photo .sun { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 220px; height: 220px; border-radius: 50%; background: var(--grad-sun); filter: blur(2px); opacity: 0.8; z-index: -1; }
+        .hero-photo .frame { position: relative; aspect-ratio: 1; border-radius: 20px; overflow: hidden; border: 2px solid var(--cyan); box-shadow: 0 0 40px -8px var(--cyan), inset 0 0 30px -10px var(--pink); }
+        .hero-photo .frame img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.1) saturate(1.15); mix-blend-mode: normal; }
+        .hero-photo .badge { position: absolute; bottom: -16px; right: -6px; background: var(--bg-2); border: 1px solid var(--pink); padding: 10px 16px; border-radius: 8px; font-family: 'Orbitron', sans-serif; font-size: 11px; display: flex; align-items: center; gap: 8px; box-shadow: 0 0 16px -4px var(--pink); }
+        .hero-photo .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+
+        /* About */
+        .about-toggle { display: inline-flex; gap: 10px; margin-bottom: 40px; }
+        .about-toggle button { font-family: 'Orbitron', sans-serif; background: transparent; border: 1px solid var(--line); color: var(--ink-soft); padding: 11px 22px; border-radius: 6px; font-size: 12px; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; }
+        .about-toggle button.active { border-color: var(--pink); color: var(--pink); box-shadow: 0 0 16px -6px var(--pink); }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .about-card { padding: 24px; border-radius: 12px; transition: transform 0.2s ease, border-color 0.2s ease; }
+        .about-card:hover { transform: translateY(-3px); border-color: var(--cyan); }
+        .about-card .when { font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--cyan); margin-bottom: 12px; }
+        .about-card .what { font-weight: 700; font-size: 17px; }
+        .about-card .where { color: var(--ink-soft); font-size: 13.5px; margin-top: 6px; }
+        .about-card .meta { color: var(--pink); font-size: 12.5px; margin-top: 6px; }
+
+        /* Skills */
+        .skills-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .skill-card { padding: 24px; border-radius: 12px; }
+        .skill-card h3 { font-family: 'Orbitron', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 18px; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.03em; }
+        .chip-row { display: flex; flex-wrap: wrap; gap: 9px; }
+        .chip { font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 6px; border: 1px solid var(--line); color: var(--ink); transition: all 0.2s ease; }
+        .chip:hover { border-color: var(--pink); color: var(--pink); box-shadow: 0 0 14px -6px var(--pink); }
+
+        /* Projects */
+        .filters { display: flex; gap: 10px; margin-bottom: 42px; flex-wrap: wrap; }
+        .filter-btn { font-family: 'Orbitron', sans-serif; background: transparent; border: 1px solid var(--line); color: var(--ink-soft); padding: 10px 18px; border-radius: 6px; font-size: 11px; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; }
+        .filter-btn.active, .filter-btn:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 14px -6px var(--cyan); }
+
+        .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .project-card { border-radius: 14px; overflow: hidden; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .project-card:hover { transform: translateY(-6px); border-color: var(--pink); }
+        .project-card .thumb { aspect-ratio: 16/10; overflow: hidden; position: relative; }
+        .project-card .thumb::after { content: ""; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(255,46,136,0.25), rgba(0,229,255,0.15)); opacity: 0; transition: opacity 0.3s ease; }
+        .project-card:hover .thumb::after { opacity: 1; }
+        .project-card .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; filter: saturate(1.1); }
+        .project-card:hover .thumb img { transform: scale(1.07); }
+        .project-body { padding: 18px; }
+        .project-cat { font-family: 'Orbitron', sans-serif; font-size: 10px; color: var(--pink); text-transform: uppercase; letter-spacing: 0.05em; }
+        .project-title { font-weight: 700; font-size: 15px; margin-top: 10px; line-height: 1.35; }
+        .project-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 12.5px; color: var(--ink-soft); font-family: 'Orbitron', sans-serif; }
+        .project-card:hover .project-link { color: var(--cyan); }
+
+        /* Contact */
+        .contact-panel { display: grid; grid-template-columns: 1fr 1fr; border-radius: 20px; overflow: hidden; }
+        .contact-left { padding: 46px; border-right: 1px solid var(--line); }
+        .contact-right { padding: 46px; }
+        .contact-left p.lead { color: var(--ink-soft); margin-bottom: 26px; max-width: 380px; }
+        .stat-row { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+        .stat-row .item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--ink-soft); }
+        .stat-row .item .ic { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+        form.contact-form { display: flex; flex-direction: column; gap: 16px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .contact-form input, .contact-form textarea { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; font-family: 'Rajdhani', sans-serif; font-size: 14px; color: var(--ink); }
+        .contact-form textarea { resize: vertical; min-height: 110px; }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 14px -6px var(--cyan); }
+        .contact-form button { font-family: 'Orbitron', sans-serif; align-self: flex-start; background: var(--pink); color: #170B2E; border: none; padding: 14px 30px; border-radius: 8px; font-weight: 700; font-size: 12.5px; text-transform: uppercase; cursor: pointer; box-shadow: 0 0 24px -8px var(--pink); transition: transform 0.2s ease; }
+        .contact-form button:hover { transform: translateY(-2px); }
+
+        footer { border-top: 1px solid var(--line); padding: 30px 0; }
+        footer .wrap { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--ink-soft); font-family: 'Orbitron', sans-serif; }
+        footer .socials { margin-top: 0; }
+        footer .socials a { width: 34px; height: 34px; }
+        footer .socials svg { width: 13px; height: 13px; }
+
+        #back-to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; border-radius: 8px; border: 1px solid var(--cyan); background: var(--bg-2); color: var(--cyan); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; pointer-events: none; transition: all 0.2s ease; z-index: 90; box-shadow: 0 0 16px -6px var(--cyan); }
+        #back-to-top.show { opacity: 1; pointer-events: auto; }
+
+        @media (max-width: 860px) {
+            .nav-links { display: none; }
+            .menu-toggle { display: flex; }
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-photo { order: -1; max-width: 260px; margin: 0 auto 30px; }
+            .skills-groups { grid-template-columns: 1fr; }
+            .tab-panel.active { grid-template-columns: 1fr; }
+            .project-grid { grid-template-columns: 1fr 1fr; }
+            .contact-panel { grid-template-columns: 1fr; }
+            .contact-left { border-right: none; border-bottom: 1px solid var(--line); }
+            .form-row { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 560px) {
+            .wrap { padding: 0 18px; }
+            section { padding: 90px 0; }
+            .project-grid { grid-template-columns: 1fr; }
+            .contact-left, .contact-right { padding: 26px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="site-header">
+        <nav class="wrap">
+            <a href="#home" class="brand"><img src="../images/icon.png" alt="">Omkar <span>Jahagirdar</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="https://medium.com/@omkar3602" target="_blank">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="../documents/Omkar_Jahagirdar.pdf" target="_blank" class="nav-cta">Resume</a>
+            <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="horizon"><div class="grid"></div></div>
+        <div class="wrap hero-grid">
+            <div>
+                <div class="eyebrow">System online</div>
+                <h1>Building the <span class="grad">future</span> with AI &amp; full-stack code.</h1>
+                <div class="role">&gt; interests --list <span id="typed"></span><span class="cursor">&nbsp;</span></div>
+                <p class="bio">I'm Omkar — a Computer Science grad student at Stony Brook University and former Software Engineering Intern at JPMorgan Chase &amp; Co. I design and ship products across AI, deep learning, and full-stack systems.</p>
+                <div class="hero-actions">
+                    <a href="../documents/Omkar_Jahagirdar.pdf" target="_blank" class="btn-primary">Download résumé</a>
+                    <a href="#projects" class="btn-ghost">View projects</a>
+                </div>
+                <div class="socials">
+                    <a href="https://linkedin.com/in/omkar-jahagirdar" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+                    <a href="https://github.com/omkar3602" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.44-2.28 1.18-3.08-.12-.29-.51-1.45.11-3.02 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.57.23 2.73.11 3.02.74.8 1.18 1.83 1.18 3.08 0 4.4-2.7 5.38-5.27 5.66.42.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <div class="sun"></div>
+                <div class="frame"><img src="../images/photo.png" alt="Omkar Jahagirdar"></div>
+                <div class="badge"><span class="dot"></span> MS CS @ STONY BROOK</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="wrap">
+            <div class="eyebrow">Background</div>
+            <h2 class="big reveal">Where I've studied &amp; <span class="grad">worked</span></h2>
+            <div class="about-toggle reveal">
+                <button class="tab-btn active" data-tab="education">Education</button>
+                <button class="tab-btn" data-tab="experience">Experience</button>
+            </div>
+            <div class="tab-panel active" id="education">
+                <div class="glow-border about-card reveal"><div class="when">AUG 2024 — CURRENT</div><div class="what">Masters in Computer Science</div><div class="where">Stony Brook University, New York, USA</div></div>
+                <div class="glow-border about-card reveal"><div class="when">JUL 2020 — MAY 2024</div><div class="what">B.Tech, Computer Engineering</div><div class="where">Vishwakarma Institute of Technology, Pune</div><div class="meta">CGPA: 9.1</div></div>
+                <div class="glow-border about-card reveal"><div class="when">JUN 2018 — MAR 2020</div><div class="what">HSC</div><div class="where">D.A.V. Public School, Pune</div><div class="meta">91.2%</div></div>
+                <div class="glow-border about-card reveal"><div class="when">JUN 2012 — MAR 2018</div><div class="what">SSC</div><div class="where">D.A.V. Public School, Pune</div><div class="meta">91.8%</div></div>
+            </div>
+            <div class="tab-panel" id="experience">
+                <div class="glow-border about-card reveal"><div class="when">JAN–JUN 2024 &amp; JUN–JUL 2023</div><div class="what">Software Engineering Intern</div><div class="where">JPMorgan Chase &amp; Co.</div></div>
+                <div class="glow-border about-card reveal"><div class="when">SEP 2022 — MAY 2023</div><div class="what">Co-Founder &amp; Club Head</div><div class="where">Team Quark, VIT Pune</div></div>
+                <div class="glow-border about-card reveal"><div class="when">OCT 2021 — SEP 2022</div><div class="what">Software Developer</div><div class="where">The Robotics Forum, VIT Pune</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="wrap">
+            <div class="eyebrow">Toolbox</div>
+            <h2 class="big reveal">Skills &amp; <span class="grad">tools</span></h2>
+            <div class="skills-groups">
+                <div class="glow-border skill-card reveal"><h3>Programming Languages</h3><div class="chip-row"><span class="chip">Python</span><span class="chip">C++</span><span class="chip">Java</span></div></div>
+                <div class="glow-border skill-card reveal"><h3>Machine Learning</h3><div class="chip-row"><span class="chip">TensorFlow</span><span class="chip">Scikit-learn</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Matplotlib</span></div></div>
+                <div class="glow-border skill-card reveal"><h3>Full Stack Development</h3><div class="chip-row"><span class="chip">Django</span><span class="chip">AWS</span><span class="chip">Spring Boot</span><span class="chip">Node.js</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="wrap">
+            <div class="eyebrow">Work</div>
+            <h2 class="big reveal">Selected <span class="grad">projects</span></h2>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                <button class="filter-btn" data-filter="web">Full Stack</button>
+                <button class="filter-btn" data-filter="other">Other</button>
+            </div>
+            <div class="project-grid">
+                <a class="glow-border project-card reveal" data-cat="ml" href="https://github.com/omkar3602/pneumonia-detector" target="_blank">
+                    <div class="thumb"><img src="../images/projects/pneumonia.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Machine Learning</div><div class="project-title">Pneumonia Detection using CNN &amp; Transfer Learning</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="glow-border project-card reveal" data-cat="ml" href="https://github.com/omkar3602/dementia-detection" target="_blank">
+                    <div class="thumb"><img src="../images/projects/dementia.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Machine Learning</div><div class="project-title">Dementia Detection</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="glow-border project-card reveal" data-cat="ml" href="https://github.com/omkar3602/heart-disease-prediction" target="_blank">
+                    <div class="thumb"><img src="../images/projects/heart_disease.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Machine Learning</div><div class="project-title">Heart Disease Prediction</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="glow-border project-card reveal" data-cat="ml" href="https://github.com/omkar3602/TRF_sudoku_solver" target="_blank">
+                    <div class="thumb"><img src="../images/projects/sudoku.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Machine Learning</div><div class="project-title">Sudoku Solver — Deep Learning &amp; Backtracking</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="glow-border project-card reveal" data-cat="web" href="https://github.com/omkar3602/Bridgestone-Idea-Management-Platform" target="_blank">
+                    <div class="thumb"><img src="../images/projects/bridgestone.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Full Stack</div><div class="project-title">Bridgestone Idea Management Platform</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="glow-border project-card reveal" data-cat="web" href="https://github.com/omkar3602/TeachAR" target="_blank">
+                    <div class="thumb"><img src="../images/projects/teachar.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Full Stack</div><div class="project-title">TeachAR — Immersive AR e-learning</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="glow-border project-card reveal" data-cat="web" href="https://github.com/omkar3602/IAFpedia" target="_blank">
+                    <div class="thumb"><img src="../images/projects/iafpedia.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Full Stack</div><div class="project-title">IAFpedia — Indian Armed Forces info portal</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="glow-border project-card reveal" data-cat="web" href="https://github.com/omkar3602/TRF_mailing_list" target="_blank">
+                    <div class="thumb"><img src="../images/projects/mailing_list.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Full Stack</div><div class="project-title">Mailing List Website</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="glow-border project-card reveal" data-cat="other" href="https://github.com/omkar3602/Flappy_Bird_Game" target="_blank">
+                    <div class="thumb"><img src="../images/projects/flappy.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Other</div><div class="project-title">Flappy Bird Game</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+                <a class="glow-border project-card reveal" data-cat="other" href="https://github.com/omkar3602/Whac-A-Mole-java" target="_blank">
+                    <div class="thumb"><img src="../images/projects/whac_a_mole.png" alt=""></div>
+                    <div class="project-body"><div class="project-cat">Other</div><div class="project-title">Whac-A-Mole Game</div><div class="project-link">View on GitHub →</div></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="wrap">
+            <div class="glow-border contact-panel reveal">
+                <div class="contact-left">
+                    <div class="eyebrow">Get in touch</div>
+                    <h2 class="big">Let's build something.</h2>
+                    <p class="lead">Have a role, a project, or just want to say hi? My inbox is open.</p>
+                    <div class="stat-row">
+                        <div class="item"><span class="ic">✉</span> <a href="mailto:omkar3602@gmail.com">omkar3602@gmail.com</a></div>
+                        <div class="item"><span class="ic">📍</span> New York, USA</div>
+                    </div>
+                    <div class="socials">
+                        <a href="https://linkedin.com/in/omkar-jahagirdar" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+                        <a href="https://github.com/omkar3602" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.44-2.28 1.18-3.08-.12-.29-.51-1.45.11-3.02 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.57.23 2.73.11 3.02.74.8 1.18 1.83 1.18 3.08 0 4.4-2.7 5.38-5.27 5.66.42.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
+                        <a href="https://medium.com/@omkar3602" target="_blank" aria-label="Medium"><svg viewBox="0 0 24 24"><path d="M13.54 12a6.72 6.72 0 1 1-13.44 0 6.72 6.72 0 0 1 13.44 0zM20.85 12c0 3.54-1.5 6.42-3.36 6.42-1.85 0-3.35-2.88-3.35-6.42s1.5-6.42 3.35-6.42c1.86 0 3.36 2.87 3.36 6.42zM24 12c0 3.17-.53 5.75-1.18 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75c.65 0 1.18 2.57 1.18 5.75z"/></svg></a>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <form class="contact-form" action="https://formsubmit.co/omkar3602@gmail.com" method="POST">
+                        <input type="hidden" name="_autoresponse" value="Thank you for using the contact form on my website. I will get back to you shortly.">
+                        <div class="form-row">
+                            <input type="text" name="name" placeholder="Your name" required>
+                            <input type="email" name="email" placeholder="Your email" required>
+                        </div>
+                        <input type="text" name="title" placeholder="Subject" required>
+                        <textarea name="message" placeholder="Your message..." required></textarea>
+                        <button type="submit">Send message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">
+            <div>OMKAR JAHAGIRDAR © <span id="year"></span></div>
+            <div class="socials">
+                <a href="mailto:omkar3602@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" style="fill:currentColor"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm18.5 2.4L12 12.2 3.5 6.4V6L12 11.4 20.5 6v.4z"/></svg></a>
+                <a href="https://github.com/omkar3602" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" style="fill:currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.44-2.28 1.18-3.08-.12-.29-.51-1.45.11-3.02 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.57.23 2.73.11 3.02.74.8 1.18 1.83 1.18 3.08 0 4.4-2.7 5.38-5.27 5.66.42.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to top">↑</button>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const backTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => backTop.classList.toggle('show', window.scrollY > 500));
+        backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        const words = ['Artificial Intelligence', 'Full Stack Development', 'AWS', 'Deep Learning'];
+        const typedEl = document.getElementById('typed');
+        let wi = 0, ci = 0, deleting = false;
+        function tick() {
+            const word = words[wi];
+            if (!deleting) { ci++; typedEl.textContent = word.slice(0, ci); if (ci === word.length) { deleting = true; setTimeout(tick, 1400); return; } }
+            else { ci--; typedEl.textContent = word.slice(0, ci); if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; } }
+            setTimeout(tick, deleting ? 40 : 65);
+        }
+        tick();
+
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById(btn.dataset.tab).classList.add('active');
+        }));
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.project-card');
+        filterBtns.forEach(btn => btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const f = btn.dataset.filter;
+            cards.forEach(c => { c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none'; });
+        }));
+    </script>
+</body>
+
+</html>
