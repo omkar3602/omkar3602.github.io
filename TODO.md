@@ -18,8 +18,16 @@
 - [x] Update the interests --list
 - [x] !IMP Update the skills (I will give new skills) Remove the % concept from the skills section and design something new. (Give me prototypes)
 
-## Priority
+- [x] Update the projects (Extract new projects from my resume), Give me a list of projects you are going to keep. Keep relavant ones only acc to current trending technologies. Don't worry about pictures, we can remove them all together or I'll just add new ones.
+- [x] Add Auto Apply project
 
+- [x] Write more about TeachAR (using published research paper as reference)
+- [x] Reorder projects (Mobile App Permission Prediction, Wrist Jockey, Auto Apply, TeachAR, Bridgestone, Pneumonia Detection)
+
+## Priority
+- [ ] Host on github
 
 ## Backlog
-- [ ] Update the projects (I will give new project content)
+- [ ] Add links for auto-apply and mobile app permission prediction system
+- [ ] Github homepage
+- [ ] Blogs on medium
