@@ -178,7 +178,7 @@ h2.big { font-size: clamp(30px, 4vw, 44px); font-weight: 800; letter-spacing: -0
 .project-tech { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
 .project-tech span { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-soft); }
 .project-link { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; font-weight: 600; color: var(--ink-soft); }
-.project-card:hover .project-link { color: var(--accent-2); }
+.project-link:hover { color: var(--accent-2); }
 
 /* Contact */
 .contact-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 0; overflow: hidden; }
