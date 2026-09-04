@@ -23,11 +23,11 @@
 
 - [x] Write more about TeachAR (using published research paper as reference)
 - [x] Reorder projects (Mobile App Permission Prediction, Wrist Jockey, Auto Apply, TeachAR, Bridgestone, Pneumonia Detection)
+- [x] Host on github
+- [x] Github homepage
 
 ## Priority
-- [ ] Host on github
 
 ## Backlog
-- [ ] Add links for auto-apply and mobile app permission prediction system
-- [ ] Github homepage
+- [ ] Add links for mobile app permission prediction system on portfolio page and also on github homepage
 - [ ] Blogs on medium
