@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming soon</title>
+
+    <link rel="icon" href="../images/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        :root {
+            --ink: #F3F3F8;
+            --accent: #F87652;
+            --accent-2: #FFB37A;
+            --violet: #8B5CF6;
+            --horizon: 62vh;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100svh;
+            background: linear-gradient(#05050A 0%, #0B0A14 55%, #120D16 100%) fixed;
+            color: var(--ink);
+            font-family: 'Sora', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---------- Scene ---------- */
+        .scene {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .scene > * { position: absolute; }
+
+        #stars { inset: 0; width: 100%; height: 100%; }
+
+        .orb {
+            left: 50%;
+            top: var(--horizon);
+            width: min(1000px, 130vw);
+            aspect-ratio: 1;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 179, 122, .30) 0%, rgba(248, 118, 82, .16) 28%, rgba(139, 92, 246, .07) 52%, transparent 70%);
+        }
+
+        .floor {
+            left: -50vw;
+            right: -50vw;
+            top: var(--horizon);
+            height: 100vh;
+            background-image:
+                linear-gradient(to bottom, rgba(248, 118, 82, .55) 1px, transparent 1px),
+                linear-gradient(to right, rgba(248, 118, 82, .55) 1px, transparent 1px);
+            background-size: 48px 48px;
+            background-position: center 0;
+            transform-origin: 50% 0;
+            transform: perspective(380px) rotateX(74deg);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 10%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 10%);
+            animation: floor 2.2s linear infinite;
+        }
+
+        .horizon {
+            left: 0;
+            right: 0;
+            top: var(--horizon);
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 179, 122, .9) 30%, var(--accent) 50%, rgba(255, 179, 122, .9) 70%, transparent);
+            box-shadow: 0 0 28px 5px rgba(248, 118, 82, .45);
+        }
+
+        .vignette {
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 45%, transparent 50%, rgba(0, 0, 0, .7));
+        }
+
+        .noise {
+            inset: 0;
+            opacity: .07;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* ---------- Stage ---------- */
+        .stage {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 72px;
+            padding: 56px 20px;
+        }
+
+        .card-wrap {
+            position: relative;
+            width: min(560px, 100%);
+            perspective: 1100px;
+            animation: rise 1.2s cubic-bezier(.2, .8, .2, 1) both;
+        }
+
+        .card {
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+            will-change: transform;
+        }
+
+        /* stacked slabs behind the face give the card physical thickness */
+        .card::before,
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 26px;
+        }
+
+        .card::before {
+            transform: translateZ(-16px);
+            background: rgba(248, 118, 82, .10);
+            border: 1px solid rgba(248, 118, 82, .22);
+        }
+
+        .card::after {
+            transform: translateZ(-32px);
+            background: rgba(139, 92, 246, .07);
+            border: 1px solid rgba(139, 92, 246, .16);
+        }
+
+        .face {
+            position: absolute;
+            inset: 0;
+            border-radius: 26px;
+            overflow: hidden;
+            background: linear-gradient(150deg, rgba(40, 42, 64, .80), rgba(14, 14, 24, .90));
+            border: 1px solid rgba(255, 255, 255, .08);
+            box-shadow:
+                0 40px 90px -30px rgba(0, 0, 0, .9),
+                0 0 90px -20px rgba(248, 118, 82, .35),
+                inset 0 1px 0 rgba(255, 255, 255, .08);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+        }
+
+        .face::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
+            background-size: 22px 22px;
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, #000, transparent 75%);
+            mask-image: radial-gradient(circle at 50% 50%, #000, transparent 75%);
+        }
+
+        .face::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -45%;
+            height: 45%;
+            background: linear-gradient(to bottom, transparent, rgba(255, 179, 122, .05) 60%, rgba(255, 179, 122, .12) 90%, transparent);
+            animation: scan 5.5s cubic-bezier(.45, 0, .55, 1) infinite;
+        }
+
+        .ring {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.5px;
+            background: conic-gradient(from var(--angle), transparent 0deg 40deg, var(--accent) 90deg, var(--accent-2) 130deg, transparent 180deg 220deg, var(--violet) 290deg, transparent 340deg);
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: spin 7s linear infinite;
+        }
+
+        .glare {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(380px circle at var(--gx, 50%) var(--gy, 30%), rgba(255, 255, 255, .11), transparent 50%);
+        }
+
+        .corner {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--accent-2);
+            opacity: .7;
+            transform: translateZ(28px);
+        }
+
+        .corner.tl { top: 16px; left: 16px; border-right: 0; border-bottom: 0; border-top-left-radius: 8px; }
+        .corner.tr { top: 16px; right: 16px; border-left: 0; border-bottom: 0; border-top-right-radius: 8px; }
+        .corner.bl { bottom: 16px; left: 16px; border-right: 0; border-top: 0; border-bottom-left-radius: 8px; }
+        .corner.br { bottom: 16px; right: 16px; border-left: 0; border-top: 0; border-bottom-right-radius: 8px; }
+
+        .content {
+            position: relative;
+            transform: translateZ(64px);
+            padding: clamp(64px, 11vw, 96px) clamp(24px, 6vw, 48px);
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: clamp(34px, 10vw, 76px);
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+        }
+
+        .grad {
+            background: linear-gradient(100deg, #FFEBD9 0%, var(--accent-2) 45%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 0 22px rgba(248, 118, 82, .35));
+        }
+
+        .dots i {
+            font-style: normal;
+            color: var(--accent);
+            animation: blink 1.6s infinite both;
+        }
+
+        .dots i:nth-child(2) { animation-delay: .2s; }
+        .dots i:nth-child(3) { animation-delay: .4s; }
+
+        .card-shadow {
+            position: absolute;
+            left: 12%;
+            right: 12%;
+            bottom: -64px;
+            height: 48px;
+            border-radius: 50%;
+            background: radial-gradient(closest-side, rgba(248, 118, 82, .35), transparent);
+            filter: blur(10px);
+            transform: translateX(var(--sx, 0px));
+        }
+
+        .player {
+            width: min(560px, 100%);
+            animation: rise 1.2s .25s cubic-bezier(.2, .8, .2, 1) both;
+        }
+
+        .player iframe {
+            display: block;
+            width: 100%;
+            height: 152px;
+            border: 0;
+            border-radius: 12px;
+            box-shadow: 0 24px 60px -24px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 255, 255, .06);
+        }
+
+        @keyframes floor { to { background-position: center 48px; } }
+        @keyframes scan { 0% { transform: translateY(0); } 60%, 100% { transform: translateY(322%); } }
+        @keyframes spin { to { --angle: 360deg; } }
+        @keyframes blink { 0%, 20% { opacity: .15; } 40%, 60% { opacity: 1; } 100% { opacity: .15; } }
+        @keyframes rise { from { opacity: 0; transform: translateY(28px); } }
+
+        @media (prefers-reduced-motion: reduce) {
+            .floor, .face::after, .ring, .dots i, .card-wrap, .player { animation: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scene" aria-hidden="true">
+        <canvas id="stars"></canvas>
+        <div class="orb"></div>
+        <div class="floor"></div>
+        <div class="horizon"></div>
+        <div class="vignette"></div>
+        <div class="noise"></div>
+    </div>
+
+    <main class="stage">
+        <div class="card-wrap" id="card-wrap">
+            <div class="card" id="card">
+                <div class="face">
+                    <div class="glare"></div>
+                    <div class="ring"></div>
+                </div>
+                <span class="corner tl"></span>
+                <span class="corner tr"></span>
+                <span class="corner bl"></span>
+                <span class="corner br"></span>
+                <div class="content">
+                    <h1><span class="grad">Coming soon</span><span class="dots"><i>.</i><i>.</i><i>.</i></span></h1>
+                </div>
+            </div>
+            <div class="card-shadow"></div>
+        </div>
+
+        <div class="player">
+            <iframe title="Wish You Were Here by Pink Floyd on Spotify" src="https://open.spotify.com/embed/track/6mFkJmJqdDVQ1REhVfGgd1" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </main>
+
+    <script>
+        const wrap = document.getElementById('card-wrap');
+        const card = document.getElementById('card');
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+        const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        let stars = [];
+        let horizon = 0;
+        let pointer = null;
+        const tilt = { rx: 0, ry: 0, gx: 50, gy: 30 };
+
+        function layout() {
+            const dpr = Math.min(devicePixelRatio || 1, 2);
+            canvas.width = innerWidth * dpr;
+            canvas.height = innerHeight * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            horizon = innerHeight * 0.62;
+            stars = Array.from({ length: Math.round(innerWidth * horizon / 4500) }, () => ({
+                x: Math.random() * innerWidth,
+                y: Math.random() * horizon,
+                r: Math.random() * 1.1 + 0.25,
+                phase: Math.random() * Math.PI * 2,
+                speed: 0.4 + Math.random() * 1.4,
+            }));
+        }
+
+        function drawStars(t, ox, oy) {
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            ctx.fillStyle = '#fff';
+            for (const s of stars) {
+                const twinkle = reduceMotion ? 0.8 : 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t * 0.001 * s.speed + s.phase));
+                const fade = Math.min(1, (horizon - s.y) / 140);
+                ctx.globalAlpha = twinkle * fade * (0.35 + s.r * 0.5);
+                ctx.beginPath();
+                ctx.arc(s.x + ox * s.r, s.y + oy * s.r, s.r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+        }
+
+        function frame(t) {
+            const r = wrap.getBoundingClientRect();
+            let targetX, targetY, targetGx, targetGy;
+
+            if (pointer) {
+                const nx = Math.max(-1, Math.min(1, (pointer.x - (r.left + r.width / 2)) / (innerWidth / 2)));
+                const ny = Math.max(-1, Math.min(1, (pointer.y - (r.top + r.height / 2)) / (innerHeight / 2)));
+                targetY = nx * 18;
+                targetX = -ny * 14;
+                targetGx = ((pointer.x - r.left) / r.width) * 100;
+                targetGy = ((pointer.y - r.top) / r.height) * 100;
+            } else {
+                const s = t / 1000;
+                targetX = Math.sin(s * 0.8) * 7;
+                targetY = Math.cos(s * 0.6) * 10;
+                targetGx = 50 + targetY * 3;
+                targetGy = 35 - targetX * 3;
+            }
+
+            tilt.rx += (targetX - tilt.rx) * 0.07;
+            tilt.ry += (targetY - tilt.ry) * 0.07;
+            tilt.gx += (targetGx - tilt.gx) * 0.12;
+            tilt.gy += (targetGy - tilt.gy) * 0.12;
+
+            card.style.setProperty('--rx', `${tilt.rx.toFixed(2)}deg`);
+            card.style.setProperty('--ry', `${tilt.ry.toFixed(2)}deg`);
+            card.style.setProperty('--gx', `${tilt.gx.toFixed(1)}%`);
+            card.style.setProperty('--gy', `${tilt.gy.toFixed(1)}%`);
+            wrap.style.setProperty('--sx', `${(-tilt.ry * 1.6).toFixed(1)}px`);
+
+            drawStars(t, -tilt.ry * 0.8, tilt.rx * 0.8);
+            requestAnimationFrame(frame);
+        }
+
+        addEventListener('pointermove', (e) => {
+            if (e.pointerType === 'mouse') pointer = { x: e.clientX, y: e.clientY };
+        });
+        document.documentElement.addEventListener('mouseleave', () => { pointer = null; });
+        addEventListener('blur', () => { pointer = null; });
+        addEventListener('resize', () => {
+            layout();
+            if (reduceMotion) drawStars(0, 0, 0);
+        });
+
+        layout();
+        if (reduceMotion) {
+            card.style.setProperty('--rx', '6deg');
+            card.style.setProperty('--ry', '-10deg');
+            drawStars(0, 0, 0);
+        } else {
+            requestAnimationFrame(frame);
+        }
+    </script>
+</body>
+
+</html>
